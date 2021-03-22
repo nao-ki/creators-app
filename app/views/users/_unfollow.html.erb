@@ -1,0 +1,9 @@
+<!-- フォロー解除ボタン ------------------------------------------------------------------>
+<!--
+<% if request.path.include?("users") || request.path.include?("follow") %>
+<%= render 'users/unfollow_num' %>
+<% end  %>
+-->
+<%= form_for(current_user, url: relationship_path(@user), method: :delete, remote: true) do |f| %>
+  <%= f.submit "フォロー中", class: "followed-btn" %>
+<% end %>

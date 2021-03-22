@@ -1,0 +1,17 @@
+  <% if request.path.include?("writes") %>
+  <%= link_to write_comment_path(comment.write_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+ <%= image_tag 'clear.png', :size => '14' %>
+  <% end %>
+  <% elsif request.path.include?("images") %>
+  <%= link_to image_comment_path(comment.image_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+ <%= image_tag 'clear.png', :size => '14' %>
+  <% end %>
+  <% elsif request.path.include?("videos") %>
+  <%= link_to video_comment_path(comment.video_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+ <%= image_tag 'clear.png', :size => '14' %>
+  <% end %>
+  <% else request.path.include?("sounds") %>
+  <%= link_to sound_comment_path(comment.sound_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+ <%= image_tag 'clear.png', :size => '14' %>
+  <% end %>
+  <% end %>

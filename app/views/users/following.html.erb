@@ -1,0 +1,52 @@
+<div class="followers-wrapper">
+
+<div class="followers">
+<div class="follow-count">
+<%# <%= link_to  user_path(@user.id) do %>
+<%= @user.nickname %>さんのフォロー
+<%# <% end %>
+ (<%= @user.following.count %>)
+<%= link_to 'フォロワー', followers_user_path(@user.id) %> (<%= @user.followers.count %>)
+</div>
+<% if @users.present? %>
+
+<div class="followers-content">
+<% @users.each do |user| %>
+<div class="each-followers-box">
+<div class="f-right">
+
+</div>
+ <% @icon = Icon.find_by(user_id: user.id) %>
+  <% if @icon %>
+  <%= image_tag @icon.icon, :size => '30', class: 'usericon' %>
+  <% else %>
+  <%= image_tag 'users.png', :size => '30', class: 'usericon'  %>
+  <% end %>
+ <div class="f-info">
+ <div class="f-nickname">
+ <%= link_to user_path(user.id) do %>
+  <%= user.nickname %>
+  <% end %>
+  <div class="f-word">
+   <% if user.word %>
+    ~ <%= user.word %> ~
+   <% end %>
+  </div>
+</div>
+<div class="f-introduction">
+  <%= user.introduction %>
+</div>
+</div>
+</div>
+<% end %>
+<% else %>
+<div class="follow-count">
+まだ<%= @user.nickname %>さんのフォロワーはいません。
+</div>
+<% end %>
+</div>
+
+</div>
+</div>
+
+

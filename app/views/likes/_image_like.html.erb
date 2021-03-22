@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+ <% if Like.find_by(user_id: current_user.id, image_id: image.id) %>
+ <div class="heart">
+  <%= link_to image_like_path(image, image.likes), {method: "delete", remote: true, class: "likes-count"} do %>
+  <%= image_tag 'like.png', :size => '20' %>
+   <% end %>
+  <%= image.likes.count %>
+  </div>
+
+ <% else %>
+ <div class="heart">
+  <%= link_to image_likes_path(image), {method: "post", remote: true, class: "likes-count"} do %>
+ <%= image_tag 'unlike.png', :size => '20' %>
+  <% end %>
+ <%= image.likes.count %>
+ </div>
+
+<% end %>
+ <% else %>
+<%= image.likes.count %>
+<% end %>

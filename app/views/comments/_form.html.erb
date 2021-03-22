@@ -1,0 +1,35 @@
+<% if @writes %>
+
+<%= form_with(model: [write, comment], url: write_comments_path(write) ) do |f| %>
+    <%= f.text_area :text,  placefolder: 'comment' %>
+     <div class="comment-do">
+    <%= f.submit "コメントする", class: "comment-submit" %>
+    </div>
+<% end %>
+<% elsif @sound %>
+
+<%= form_with(model: [sound, comment], url: sound_comments_path(sound) ) do |f| %>
+    <%= f.text_area :text, placefolder: 'comment' %>
+     <div class="comment-do">
+    <%= f.submit "コメントする" %>
+    </div>
+<%end %>
+<% elsif @image %>
+
+<%= form_with(model: [image, comment], url: image_comments_path(image) ) do |f| %>
+<div class="comment-wrap">
+    <%= f.text_area :text, placefolder: 'comment' %>
+</div>
+<div class="comment-do">
+    <%= f.submit "コメントする" %>
+</div>
+<%end %>
+<% else @video %>
+
+<%= form_with(model: [video, comment], url: video_comments_path(video) ) do |f| %>
+    <%= f.text_area :text, placefolder: 'comment' %>
+    <div class="comment-do">
+    <%= f.submit "コメントする" %>
+    </div>
+<% end %>
+<% end %>

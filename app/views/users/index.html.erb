@@ -1,0 +1,7 @@
+<div class="space" style="margin-top: 90px">
+    <% @users.each do |user| %>
+        <%= user.nickname %>
+            <%= %>
+                <a href="/users/<%= user.id %>">詳細ページへ</a>
+                <% end %>
+</div>

@@ -1,0 +1,104 @@
+@charset "UTF-8";
+body {
+    width: 100%;
+    margin: 0;
+}
+
+.artist-genre {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0;
+}
+
+.profile-name {
+    text-align: center;
+    font-size: 24px;
+}
+
+.profile-name .name-mr {
+    font-size: 15px;
+    text-align: center;
+}
+
+.profile-genre {
+    margin-top: 10px;
+}
+
+.profile-wrapper .left {
+    width: 25%;
+    background: linear-gradient(to right, #3333f8, #928e8e);
+    padding: 30px 25px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    text-align: center;
+    color: #fff;
+}
+
+.profile-wrapper .left img {
+    margin-bottom: 10px;
+    border-radius: 50%;
+    box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.28);
+}
+
+.main-wrapper-profile p {
+    margin-bottom: 10px;
+}
+
+.profile-wrapper .left p {
+    font-size: 12px;
+}
+
+.profile-wrapper .right {
+    width: 65%;
+    background-color: #fff;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 2px 3px;
+}
+
+.profile-edit {
+    float: right;
+    position: relative;
+    right: 0;
+    bottom: 0;
+    color: red;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profile-edit:hover {
+    background-color: blue;
+}
+
+.profile-title {
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+    margin-top: 80px;
+    text-align: center;
+}
+
+h2.profile-portfolio {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+}
+
+.follow {
+    margin-top: 30px;
+    font-size: 17px;
+    color: white;
+    // background-color: #2d2d2d;
+    border-radius: 7px;
+}
+
+.un-follow {
+    margin-top: 30px;
+    font-size: 17px;
+    color: white;
+    background-color: #8a8a8a;
+    border-radius: 7px;
+}

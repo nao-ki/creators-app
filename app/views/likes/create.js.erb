@@ -1,0 +1,17 @@
+<% if @write %>
+
+ $("#like-<%= @write.id %>").html("<%= j(render partial: 'write_like', locals: { write: @write }) %>");
+
+<% elsif @video %>
+
+ $("#like-<%= @video.id %>").html("<%= j(render partial: 'video_like', locals: { video: @video }) %>");
+
+<% elsif @sound %>
+
+ $("#like-<%= @sound.id %>").html("<%= j(render partial: 'sound_like', locals: { sound: @sound }) %>");
+
+<% else %>
+
+ $("#like-<%= @image.id %>").html("<%= j(render partial: 'image_like', locals: { image: @image }) %>");
+
+<% end%>

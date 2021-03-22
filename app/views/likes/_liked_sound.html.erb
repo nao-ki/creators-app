@@ -1,0 +1,44 @@
+
+  <div class="liked-user-wrapper">
+  <div class="like-works-wrapper">
+  <div class="wrapper-like">
+     <% sound = Sound.find(like.sound_id) %>
+     <% icon = Icon.find_by(user_id: sound.user.id) %>
+      <% if icon %>
+      <%= image_tag icon.icon, :size => '30', class: 'usericon' %>
+    <% else %>
+    <%= image_tag 'users.png', :size => '30', class: 'usericon'  %>
+    <% end %>
+    <div class="user-wrap-like">
+  <div class="username">
+  <%= link_to user_path(sound.user.id) do %>
+  <%= sound.user.nickname %>
+  <% end %>
+  </div>
+    <div class="word">
+    <%= sound.user.word %>
+  </div>
+  </div>
+  </div>
+  <div class="sound" id="works" >
+  <%# <%= image_tag 'sound-only.jpg' %>
+  <audio src="<%= rails_blob_path(sound.sound)%>"  type="audio/mp3" controls></audio>
+   </div>
+   <div class="l-tcwrapper">
+        <div id="like-<%= sound.id %>">
+    <%= render 'likes/sound_like', { sound: sound} %>
+    </div>
+   </div>
+  <div id="title">
+  <%= sound.title %>
+  </div>
+  <div id="content">
+  <%= sound.content %>
+  fsdfnjsdnfjksdnbfjkbsdnkjfbsdhlbfhjbhjsdbfjhdshlfb
+  sfsdnbfsdbjfbdksbfjdsfsdfnjsdnfjksdnbfjkbsdnkjfbsdhlbfhjbhjsdbfjhdshlfb
+  sfsdnbfsdbjfbdksbfjds
+  </div>
+
+  </div>
+</div>
+</div>

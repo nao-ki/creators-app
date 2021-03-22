@@ -1,0 +1,32 @@
+
+ <div class="comments-count">
+
+ </div>
+
+<% comments.each do |comment| %>
+<% icon = Icon.find_by(user_id: comment.user.id) %>
+<div class="each-comments-wrapper">
+ <div id="comment-name">
+
+  <% if icon %>
+<%= image_tag icon.icon, :size => '30', class: 'usericon' %>
+<% else %>
+  <%= image_tag 'users.png', :size => '30', class: 'usericon'  %>
+<% end %>
+
+ <div class="icon-content">
+   <%= render 'users/userinfo', {image: comment, userid: comment.user.id} %>
+   </div>
+
+ <%= link_to "@#{comment.user.nickname}", user_path(comment.user.id), class: 'commenter' %>
+   <% if comment.user == current_user %>
+  <%= render 'comments/delete_parts', {comment: comment} %>
+  <% end %>
+  </div>
+
+ <div class="comment-text">
+ <%= comment.text %>
+ </div>
+</div>
+  <% end %>
+

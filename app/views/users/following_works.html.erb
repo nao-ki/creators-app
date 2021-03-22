@@ -1,0 +1,22 @@
+<div style="margin-top: 100px;">
+
+<% @works.each do |work| %>
+<p>
+<% @name = work.model_name %>
+<% if @name == "Image" %>
+<%= render partial: 'relationships/follow_images', locals: { work: work } %>
+
+<% elsif @name == "Video" %>
+<%= render partial: 'relationships/follow_videos', locals: { work: work } %>
+
+ <% elsif @name == "Write" %>
+<%= render partial: 'relationships/follow_writes', locals: { work: work } %>
+
+ <% else @name == "Sound" %>
+ <%= render partial: 'relationships/follow_sounds', locals: { work: work } %>
+<% end  %>
+</p>
+
+<% end %>
+
+<div>

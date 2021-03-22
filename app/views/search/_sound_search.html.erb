@@ -1,0 +1,38 @@
+  <div class="tagedBox">
+
+  <% soundworks = Sound.where(id: sound.sound_id) %>
+  <% soundworks.each do |sound| %>
+    <% user = User.find_by(id: sound.user_id ) %>
+  <div class="taged-user-wrapper">
+<div class="taged-usericon">
+<% icon = Icon.find_by(user_id: sound.user.id) %>
+    <% if icon %>
+    <%= image_tag icon.icon, :size => '30', class: 'usericon' %>
+    <% else %>
+    <%= image_tag 'users.png', :size => '30', class: 'usericon'  %>
+    <% end %>
+</div>
+<div class="taged-user-box">
+<div id="taged-name">
+ <%= user.nickname %>
+ </div>
+ <div id="taged-word">
+  <%= user.word %>
+  </div>
+</div>
+</div>
+<div class="works taged-sound-wrapper">
+   <% if sound.sound.attached? %>
+ <audio src="<%= rails_blob_path(sound.sound) %>" controlslist="nodownload type=" type="video/mp4" controls></audio>
+  <% end %>
+</div>
+<div class="taged-works-intro">
+  <div id="title">
+    <%= sound.title %>
+  </div>
+    <div id="content">
+  <%= sound.content %>
+  </div>
+</div>
+  <% end %>
+</div>

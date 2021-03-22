@@ -1,0 +1,37 @@
+
+<div class="sign_in-image">
+<div class="lr-form">
+<div class="back">
+</div>
+<div class="form-box">
+    <div class="app-name">Creators</div>
+    <div class="cp-form">
+        <div class="app-cp">Your Creation Inspire the World.</div>
+        <div class="app-cp-jp">自分の作品を投稿して、世界に広めよう</div>
+    </div>
+    <% if alert %>
+    <%= alert %>
+<% end %>
+    <%= form_for(resource, as: resource_name, url:
+  registration_path(resource_name)) do |f| %>
+
+        <%= f.text_field :nickname, autofocus: true, maxlength: "100", class: "input-field", placeholder: "ニックネーム" %>
+        <em>(6 characters maximum)</em><br />
+
+        <%= f.email_field :email,
+  autofocus: true, autocomplete: "email", class: "input-field", placeholder: "メールアドレス" %>
+            <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                    <%= f.password_field :password, autocomplete: "new-password", class:
+  "input-field", placeholder: "パスワード" %>
+                        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input-field", placeholder: "パスワードを再入力" %>
+                            <%= f.submit "新規登録", class: "submit-btn", id: 'signup'
+  %>
+    <% end %>
+    <div class="to-singin">
+        <%= render "devise/shared/links" %>
+    </div>
+</div>
+</div>
+</div>

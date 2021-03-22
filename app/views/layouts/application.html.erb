@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Creators</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+</head>
+
+<body>
+<% unless user_signed_in? %>
+
+<% else %>
+<header class="header-3">
+  <div class="header-inner">
+    <div class="logo">
+    <%= link_to root_path do %>
+      Creators
+      <% end %>
+
+    <div class="tagname">
+    <%= form_tag(search_path,:method => 'get') do %>
+      <%= text_field_tag :tagname, value= nil, placeholder: "＃タグで検索"   %>
+    <% end %>
+    </div>
+
+</div>
+
+
+    <nav class="header-nav">
+          <div class="header-nav-item">
+        <div class="header-button header-login">
+        </div>
+      </div>
+    <div class="header-button">
+<%= link_to videos_path do %>
+      <%= image_tag 'movie.png', :size=> "40x40" %>
+<% end %>
+     </div>
+  <div class="header-button">
+      <%= link_to sounds_path do %>
+        <%= image_tag 'sound.png', :size=> "40x40" %>
+      <% end %>
+     </div>
+  <div class="header-button">
+      <%= link_to writes_path do %>
+            <%= image_tag 'pen.png', :size=> "50x50" %>
+      <% end %>
+  </div>
+     <div class="header-button">
+ <% if current_user %>
+ <%= link_to  user_path(current_user.id) do %>
+      <%= image_tag 'portfolio.png', :size=> "35x35" %>
+<% end %>
+<%  end %>
+     </div>
+<div class="header-button followers">
+    <% if current_user %>
+    <%= link_to following_user_path(current_user.id)  do %>
+      <%= image_tag 'users2.png', :size=> "35x35" %>
+    <% end %>
+    <% end %>
+    </div>
+      <div class="header-nav-item">
+        <div class="header-button header-post" id="openModal">Create!</div>
+      </div>
+
+      <div id="modalArea" class="modalArea">
+  <div id="modalBg" class="modalBg"></div>
+  <div class="modalWrapper">
+    <div class="modalContents">
+    <%= render 'layouts/posts_form' %>
+    </div>
+    <div id="closeModal" class="closeModal">
+      ×
+    </div>
+    </div>
+  </div>
+
+   <div class="header-button">
+       <% if user_signed_in? %>
+      <% @icon = Icon.find_by(user_id: current_user.id)%>
+
+      <% if @icon %>
+      <%= image_tag @icon.icon, :size => '30', class: 'usericon' %>
+      <% else %>
+      <%= image_tag 'users.png', :size => '30', class: 'usericon'  %>
+      <% end %>
+
+      <div class="usercontent">
+      <ul>
+         <li>
+       <%= link_to 'プロフィール', user_path(current_user.id) %>
+       </li>
+       <li>
+       <%= link_to 'フォロー作品', user_following_works_path(current_user.id) %>
+       </li>
+       <li>
+       <%= link_to 'いいね', user_likes_path(current_user.id) %>
+       </li>
+       <li>
+       <%= link_to 'about', about_path %>
+       </li>
+
+       <li>
+            <% if user_signed_in?%>
+              <%= link_to 'ログアウト',
+                "/users/sign_out", method: :delete %>
+              <% else %>
+              <a href="/users/sign_up">sign-up</a>
+              <a href="/users/sign_in">sign-in</a>
+              <% end %>
+       </li>
+      </ul>
+    <% end %>
+    </div>
+     </div>
+        <div class="header-username">
+    <% if current_user %>
+    <%= link_to  user_path(current_user.id) do %>
+    <%= current_user.nickname %>
+    <% end %>
+
+  </div>
+  <% end %>
+    </nav>
+  </div>
+</header>
+<% end %>
+  <%= yield %>
+</body>
+
+</html>
+

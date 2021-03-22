@@ -1,0 +1,41 @@
+  <div class="liked-user-wrapper">
+  <div class="like-works-wrapper">
+    <div class="wrapper-like">
+
+     <% work = Sound.find(work.id) %>
+     <% icon = Icon.find_by(user_id: work.user.id) %>
+      <% if icon %>
+      <%= image_tag icon.icon, :size => '30', class: 'usericon' %>
+    <% else %>
+    <%= image_tag 'users.png', :size => '30', class: 'usericon'  %>
+    <% end %>
+    <div class="user-wrap-like">
+  <div class="username">
+  <%= link_to user_path(work.user.id) do %>
+  <%= work.user.nickname %>
+  <% end %>
+  </div>
+    <div class="word">
+    <%= work.user.word %>
+  </div>
+  </div>
+  </div>
+  <div id="works">
+ <audio src="<%= rails_blob_path(work.sound)%>" width="600px", height="600px" type="audio/mp3" controlslist="nodownload type=" controls></audio>
+   </div>
+   <div class="l-tcwrapper">
+ <div id="like-<%= work.id %>">
+  <%= render 'likes/sound_like', { sound: work} %>
+</div>
+   </div>
+  <div id="title">
+  <%= work.title %>
+  </div>
+  <div id="content">
+  <%= work.content %>
+
+  </div>
+
+  </div>
+</div>
+</div>

@@ -1,0 +1,13 @@
+<% if @write %>
+$("#comments_area").html("<%= j(render 'index', { comments: @comment.write.comments.order("created_at DESC") }) %>")
+$("textarea").val('')
+<% elsif @image %>
+$("#comments_area").html("<%= j(render 'index', { comments: @comment.image.comments.order("created_at DESC") }) %>")
+$("textarea").val('')
+<% elsif @video %>
+$("#comments_area").html("<%= j(render 'index', { comments: @comment.video.comments.order("created_at DESC") }) %>")
+$("textarea").val('')
+<% else @sound %>
+$("#comments_area").html("<%= j(render 'index', { comments: @comment.sound.comments.order("created_at DESC") }) %>")
+$("textarea").val('')
+<% end %>

@@ -1,0 +1,70 @@
+<p style="font-size: 20px; margin-top: 50px; margin-left:100px;">
+
+<div class="posts-wrapper-content">
+
+<div class="preview-text" id="image">
+<%= @writes.content %>
+
+</div>
+
+<div class="work-info-wrapper">
+<div class="name-word-wrapper">
+<div class="icon-wrap">
+  <% @icon = Icon.find_by(user_id: @writes.user_id) %>
+    <% if @icon %>
+      <%= link_to user_path(@writes.user.id) do %>
+    <%= image_tag @icon.icon, :size => '30', class: 'work-usericon' %>
+    <% end %>
+    <% else %>
+    <%= image_tag 'users.png', :size => '30', class: 'work-usericon'  %>
+    <% end %>
+  </div>
+  <div id="nw-content">
+    <div id="name-content">
+    <%= link_to user_path(@writes.user.id) do %>
+   <%= @writes.user.nickname %>
+   <% end %>
+    </div>
+    <div id="word-content">
+    <% if @writes.user.word %>
+   <%= @writes.user.word %>
+   <% else %>
+   <%= @writes.user.genre %>
+   <% end %>
+    </div>
+  </div>
+</div>
+<div class="commentwritten-wrapper">
+    <div class="title-content-wrapper">
+<div id="title">
+<%= @writes.title %>
+</div>
+
+<div id="content">
+<%= @writes.summary %>
+
+</div>
+ <div class="work-comment-wrapper">
+    <div id="comments_area">
+        <%= render partial: 'comments/index', locals: { comments: @comments } %>
+    </div>
+  </div>
+    </div>
+</div>
+<div class="comment-create-wrapper">
+
+<% if user_signed_in?  %>
+<div class="comment-create-wrapper">
+<div class="comment-create">
+<div class="like-comment-wrap">
+<div id="like-<%= @writes.id %>">
+  <%= render 'likes/write_like', { write: @writes} %>
+</div>
+</div>
+<div class="c-wrapper">
+
+  <%= render partial: 'comments/form', locals: { comment: @comment, write: @writes } %>
+</div>
+<% end %>
+</div>
+</div>

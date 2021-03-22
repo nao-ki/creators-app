@@ -1,0 +1,78 @@
+<%= form_with model: @user, local: true do |u| %>
+
+
+<h2 class="profile-title"><%= current_user.nickname %></h2>
+<div class="edit-content">
+<div class="img_block">
+  <%= link_to icon_path(current_user.id) do %>
+        <% if @usericon%>
+        <%= image_tag @usericon.icon, :size => '160', :id => 'editicon' %>
+        <% else  %>
+        <%= image_tag 'users.png', :size => '160', :id => 'editicon' %>
+        <% end %>
+    <% end %>
+   <%# <%= u.file_field :icon %>
+</div>
+    <div id="editicon-wrapper">
+    </div>
+<div class="profile-edit-wrapper">
+<table>
+  <tr>
+    <th>ニックネーム
+     <div class="each-explain">
+      ※20文字以内
+    </div>
+    </th>
+    <td><%= u.text_field :nickname, :value => @user.nickname %></td>
+  </tr>
+  <tr>
+    <th> ジャンル
+      <div class="each-explain">
+      ※美大生、写真家、小説家
+    </div>
+    </th>
+    <td>
+    <%= u.text_field :genre, :value => @user.genre, :placeholder => 'アーティスト、小説家、映像制作者' %>
+    </td>
+  </tr>
+  <tr>
+    <th>ひとこと
+      <div class="each-explain">
+      ※個展開催中、制作中、コラボ募集中
+    </div>
+    </th>
+    <td><%= u.text_field :word, :value => @user.word  %></td>
+  </tr>
+  <tr>
+    <th>メールアドレス
+    <div class="each-explain">
+
+    </div>
+    </th>
+    <td><%= u.text_field :email, :value => @user.email %></td>
+  </tr>
+   <tr>
+    <th> URLリンク
+    <div class="each-explain">
+
+    </div>
+    </th>
+    <td><%= u.text_field :url_link, :value => @user.url_link %></td>
+  </tr>
+   <tr>
+    <th>自己紹介
+    <div class="each-explain">
+    ※500文字以内
+    </div>
+    </th>
+    <td><%= u.text_area :introduction, :value => @user.introduction %></td>
+  </tr>
+
+</table>
+</div>
+
+<div class="edit-profilebutton-wrapper">
+<%= u.submit "編集完了", class: 'edit-profile-send' %>
+</div>
+
+<% end %>

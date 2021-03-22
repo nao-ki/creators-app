@@ -1,0 +1,47 @@
+<div class="userinfo-wrapper">
+<div class="home-icon">
+ <% if @icon %>
+  <%= image_tag @icon.icon, :size => '30', class: 'usericon', id: 'userinfo' %>
+ <% else %>
+ <%= image_tag 'users.png', :size => '30', class: 'usericon', id: 'userinfo' %>
+ <% end %>
+
+ <div class="name-words">
+  <div class="names">
+    <%= link_to user_path(image.user.id) do %>
+      <%= image.user.nickname %>
+  </div>
+  <div class="word">
+    <%= image.user.word %>
+  </div>
+ </div>
+  </div>
+   <% end %>
+
+
+<!--
+
+-->
+ <div class="info-wrapper">
+ <div class="post-followers-wrapper">
+
+ <li>投稿数
+ <% total = Image.includes([:user, :videos]).where(user_id: userid) %>
+  <div class="num"><%= total.count %></div>
+ </li>
+ <li>フォロー
+
+ <% @user = User.find(userid) %>
+ <%= link_to following_user_path(@user.id) do %>
+ <div class="num"><%= @user.following.count %></div>
+ <% end %>
+ </li>
+ <li>フォロワー
+ <%= link_to followers_user_path(userid) do %>
+ <div class="num"><%= @user.followers.count %></div>
+ <% end %>
+ </li>
+<%# <%= render 'users/follow_form' %>
+ </div>
+ </div>
+</div>

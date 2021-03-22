@@ -1,0 +1,40 @@
+  <div class="tagedBox">
+
+  <% imagework = Image.where(id: image.image_id) %>
+  <% imagework.each do |iworks| %>
+
+  <% user = User.find_by(id: iworks.user_id ) %>
+<div class="taged-user-wrapper">
+<div class="taged-usericon">
+<% icon = Icon.find_by(user_id: iworks.user.id) %>
+    <% if icon %>
+    <%= image_tag icon.icon, :size => '30', class: 'usericon' %>
+    <% else %>
+    <%= image_tag 'users.png', :size => '30', class: 'usericon'  %>
+    <% end %>
+</div>
+<div class="taged-user-box">
+<div id="taged-name">
+ <%= user.nickname %>
+ </div>
+ <div id="taged-word">
+  <%= user.word %>
+  </div>
+</div>
+</div>
+<div class="works">
+   <% if iworks.image.attached? %>
+  <%= image_tag iworks.image, :size =>'300' %>
+  <% end %>
+</div>
+<div class="taged-works-intro">
+ <div id="title">
+ <%= iworks.title %>
+ </div>
+  <div id="content">
+   <%= iworks.content %>
+ </div>
+</div>
+  <% end %>
+
+</div>

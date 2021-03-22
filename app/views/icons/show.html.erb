@@ -1,0 +1,7 @@
+
+<div style="margin-top: 100px; margin-left: 400px;">
+<% if @icons.icon.attached? %>
+<%= image_tag @icons.icon, :size => '100' %>
+<%= @icons.user.nickname%>
+<% end %>
+</div>

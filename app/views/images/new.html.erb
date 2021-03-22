@@ -1,0 +1,43 @@
+
+<div class="posts-wrapper-content">
+　<div class="preview" id="image"> </div>
+  <div class="information-content">
+  <div class="info-cover">
+
+  <%= form_with model: @image, local: true  do |i| %>
+
+  <div class="title-form">
+
+  :タイトルを入力してください
+  </div>
+    <%= i.text_field :title %>
+  <div class="content-wrapper">
+  :内容を入力してください。
+  </div>
+    <%= i.text_area :content, class: 'content-form' %>
+    <label class="file-up">
+
+    ファイルを選択
+    <%= i.file_field :image, id: "pac-input" %><br>
+    </label>
+    <% if @error %>
+<%= @error %>
+<% end %>
+    <%= i.submit "投稿する", class: 'send-button' %>
+  <% end %>
+
+  </div>
+  </div>
+</div>
+<script>
+    let image = document.getElementById("pac-input");
+    image.addEventListener("change", function(evt){
+        let file = evt.target.files;
+        let reader = new FileReader();
+        reader.readAsDataURL(file[0]);
+        reader.onload = function(){
+            let dataUrl = reader.result;
+            document.getElementById("image").innerHTML = "<img src='" + dataUrl + "'>";
+        }
+    },false);
+</script>

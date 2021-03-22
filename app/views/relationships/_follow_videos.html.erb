@@ -1,0 +1,41 @@
+  <div class="liked-user-wrapper">
+  <div class="like-works-wrapper">
+    <div class="wrapper-like">
+
+     <% work = Video.find(work.id) %>
+     <% icon = Icon.find_by(user_id: work.user.id) %>
+      <% if icon %>
+      <%= image_tag icon.icon, :size => '30', class: 'usericon' %>
+    <% else %>
+    <%= image_tag 'users.png', :size => '30', class: 'usericon'  %>
+    <% end %>
+    <div class="user-wrap-like">
+  <div class="username">
+  <%= link_to user_path(work.user.id) do %>
+  <%= work.user.nickname %>
+  <% end %>
+  </div>
+    <div class="word">
+    <%= work.user.word %>
+  </div>
+  </div>
+  </div>
+  <div id="works">
+ <video src="<%= rails_blob_path(work.video)%>" width="600px", height="600px" type="video/mp4" controlslist="nodownload type=" controls></video>
+   </div>
+   <div class="l-tcwrapper">
+ <div id="like-<%= work.id %>">
+  <%= render 'likes/video_like', { video: work} %>
+</div>
+   </div>
+  <div id="title">
+  <%= work.title %>
+  </div>
+  <div id="content">
+  <%= work.introduction %>
+
+  </div>
+
+  </div>
+</div>
+</div>

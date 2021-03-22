@@ -1,0 +1,12 @@
+<div class="modal_window">
+<div class="spaces" style="margin-top: 200px; margin-left: 100px;">
+VIDEO
+<%= form_with model: @video, local: true do |form| %>
+  <p>title</p><%= form.text_field :title %> <br>
+  <p>introduction</p><%= form.text_area :introduction %> <br>
+  <p>video</p><%= form.file_field :video %> <br>
+  <%= form.submit %>
+<% end %>
+</div>
+<div class="button close2">CLOSE</div>
+</div>

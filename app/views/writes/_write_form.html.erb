@@ -1,0 +1,15 @@
+<div class="modal_window">
+   <h3>モーダルウインドウ</h3>
+   <div class="text-content-wrapper">
+    <%= form_tag('/writes', method: :post) do %>
+        <h3>投稿する</h3>
+        <div class="text-content-form">
+            <input class="text-title" placeholder="タイトル" type="text" name="title" />
+            <textarea cols="30" name="content" type="text" class="text-form" placeholder="本文" rows="10"></textarea>
+            <textarea cols="30" name="summary" type="text" class="summary-form" placeholder="あらすじ" rows="10"></textarea>
+            <input type="submit" value="SENT" />
+        </div>
+        <% end %>
+</div>
+   <div class="button close">CLOSE</div>
+</div>

@@ -1,0 +1,113 @@
+<h2 class="profile-title">Profile</h2>
+
+<div class="profile-wrapper">
+  <div class="left">
+  <% if @usericon%>
+ <%= image_tag @usericon.icon, :size => '80' %>
+ <% else  %>
+ <%= image_tag 'users.png', :size => '80' %>
+ <% end %>
+    <div class="artist-genre">
+      <%= @user.genre %>
+    </div>
+    <div class="one-word">
+      <%= @user.word %>
+    </div>
+    <!-- フォロー表示分岐 -->
+    <!--
+    <div class="follower">
+      <%= link_to followers_user_path(@user.id) do %>
+      <h5 style="color: black">フォロワー
+        <%= @user.followers.count %>人</h5>
+      <% end %>
+    </div>
+    <div class="follow">
+      <%= link_to following_user_path(@user.id) do %>
+      <h5 style="color: black">フォロー
+        <%= @user.following.count %>人</h5>
+      <% end %>
+    </div>
+    -->
+    <div>
+    <div class="count">
+    </div>
+      <%= render "follow_form" %>
+    </div>
+    <!-- フォロー表示分岐 -->
+  </div>
+  <!-- left end -->
+  <div class="right">
+    <div class="profile-info">
+      <div class="profile-name"><%= @user.nickname %></div>
+      <div class="profile-info-list">
+
+      </div>
+      <div class="profile-info-list">
+        <%= @user.url_link %>
+      </div>
+      <div class="profile-info-list" id="introduction">
+        <%= @user.introduction %>safafnaklnf
+        fmkafklaklfmkafklaklfmka
+      </div>
+    </div>
+    <% if current_user.id == @user.id %>
+    <a href="/users/<%= @user.id %>/edit">
+      <div class="edit-submit-post-profile">プロフィール編集</div>
+    </a>
+    <% end %>
+  </div>
+
+</div>
+
+  <div class="userWorks-content">
+  <div class="worksGenre">
+    <ul>
+      <li>
+
+      <%= link_to  user_path(current_user.id) do %>
+      ホーム  (<%= @allworks.count %>)
+      <% end %>
+      </li>
+        <li>
+         <%= link_to  user_images_path(current_user.id) do %>
+      画像
+      <% end %>
+      </li>
+      <li>
+     <%= link_to  user_sounds_path(current_user.id) do %>
+     音楽
+      <% end %>
+      </li>
+      <li>
+     <%= link_to  user_videos_path(current_user.id) do %>
+     動画
+      <% end %>
+      </li>
+      <li>
+     <%= link_to  user_writes_path(current_user.id) do %>
+     文字
+     </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="userWorksWrapper">
+
+  <% @allworks.each do |work| %>
+   <div class="eachWorksBox">
+   <% @name = work.model_name %>
+   <% if @name == "Image" %>
+    <%= render partial: 'users/images_works', locals: { image: work} %>
+    <% elsif @name == "Video" %>
+    <%= render partial: 'users/videos_works', locals: { video: work} %>
+    <% elsif @name == "Write" %>
+   <%= render partial: 'users/writes_works', locals: { write: work} %>
+    <% else @name == "Sound" %>
+    <%= render partial: 'users/sounds_works', locals: { sound: work} %>
+    <% end %>
+   </div>
+   <% end %>
+
+  </div>
+  </div>
+
+

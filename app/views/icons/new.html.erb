@@ -1,0 +1,7 @@
+<h1 style="margin-top: 200px">ICON 画像投稿ページ</h1>
+
+<%= form_with model: @icon, local: true  do |i| %>
+  <%= i.file_field :icon %><br>
+  <%= i.submit "SEND" %>
+<% end %>
+

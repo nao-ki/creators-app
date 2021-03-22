@@ -1,0 +1,15 @@
+<div class="slideshow">
+  <div id="slider">
+    <% @images.each do |image| %>
+    <%# <%= image.user.id %>
+    <%= link_to image_path(image.id) do %>
+
+      <%= image_tag image.image, :size => '400' if image.image.attached? %>
+    <% end %>
+      <%# <div id="title"> %>
+       <%# <%= image.title %>
+      <%# </div> %>
+    <% end %>
+
+  </div>
+</div>

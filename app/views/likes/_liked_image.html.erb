@@ -1,0 +1,47 @@
+  <div class="liked-user-wrapper">
+  <div class="like-works-wrapper">
+    <div class="wrapper-like">
+
+     <% image = Image.find(like.image_id) %>
+     <% icon = Icon.find_by(user_id: image.user.id) %>
+      <% if icon %>
+      <%= image_tag icon.icon, :size => '30', class: 'usericon' %>
+    <% else %>
+    <%= image_tag 'users.png', :size => '30', class: 'usericon'  %>
+    <% end %>
+    <div class="user-wrap-like">
+  <div class="username">
+  <%= link_to user_path(image.user.id) do %>
+  <%= image.user.nickname %>
+  <% end %>
+  </div>
+    <div class="word">
+    <%= image.user.word %>
+  </div>
+  </div>
+  </div>
+  <div id="works">
+  <%= image_tag image.image, :size =>'600' %>
+   </div>
+   <div class="l-tcwrapper">
+    <div id="like-<%= image.id %>">
+    <%= render 'likes/image_like', { image: image} %>
+    </div>
+    <%= link_to image_path(image.id) do %>
+    <%= image_tag 'comment.svg', :size => '26' %>
+    <%# <div id="counts"> %>
+    <%= image.comments.count %>
+    <%# </div> %>
+    <% end %>
+   </div>
+  <div id="title">
+  <%= image.title %>
+  </div>
+  <div id="content">
+  <%= image.content %>
+
+  </div>
+
+  </div>
+</div>
+</div>

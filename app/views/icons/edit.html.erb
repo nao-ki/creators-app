@@ -1,0 +1,8 @@
+<h1 style="margin-top: 200px; margin-left: 200px;">ICON editページ
+
+<%= form_with model: @icon, url: icon_path(@icon.id), method: :patch, local: true  do |i| %>
+  <%= i.file_field :icon %><br>
+  <%= i.submit "SEND" %>
+<% end %>
+
+</h1>

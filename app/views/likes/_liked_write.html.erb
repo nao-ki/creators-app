@@ -1,0 +1,50 @@
+
+  <div class="liked-user-wrapper">
+  <div class="like-works-wrapper">
+    <div class="wrapper-like">
+    <div class="fw-btn">
+    <%# <%= render "users/follow_form" %>
+    </div>
+     <% write = Write.find(like.write_id) %>
+     <% icon = Icon.find_by(user_id: write.user.id) %>
+      <% if icon %>
+      <%= image_tag icon.icon, :size => '30', class: 'usericon' %>
+    <% else %>
+    <%= image_tag 'users.png', :size => '30', class: 'usericon'  %>
+    <% end %>
+     <div class="user-wrap-like">
+  <div class="username">
+  <%= link_to user_path(write.user.id) do %>
+  <%= write.user.nickname %>
+  <% end %>
+  </div>
+    <div class="word">
+    <%= write.user.word %>
+  </div>
+  </div>
+  </div>
+  <div id="works" >
+
+<div class="write_content">
+<div id="writes">
+  <%= write.content %>adjanfla
+
+  </div>
+  </div>
+   </div>
+   <div class="l-tcwrapper">
+    <div id="like-<%= write.id %>">
+    <%= render 'likes/write_like', { write: write} %>
+    </div>
+   </div>
+  <div id="title">
+  <%= write.title %>
+  </div>
+  <div id="content">
+  <%= write.summary %>
+
+  </div>
+
+  </div>
+</div>
+</div>

@@ -1,0 +1,8 @@
+
+
+   <% if sound.sound.attached? %>
+ <audio src="<%= rails_blob_path(sound.sound) %>" controlslist="nodownload type=" type="video/mp4" controls></audio>
+  <% end %>
+ <div id="title-work">
+  <%= sound.title %>
+ </div>

@@ -1,0 +1,29 @@
+
+<div class="searched-contents">
+<div class="searched-result">
+<div class="tagname">
+＃<%= @tagname %>
+</div>
+<div class="tagcount">
+の検索結果は<%= @total.count %>件です。
+</div>
+</div>
+
+<div class="taged-works-wrapper">
+<% @taged_works.each do |work| %>
+ <% works = PostTag.where(tag_id: work.id).order("created_at desc") %>
+   <% works.each do |image| %>
+  <% if image.image_id %>
+    <%= render partial: 'search/image_search', locals: { image: image }  %>
+  <% elsif image.video_id %>
+    <%= render partial: 'search/video_search', locals: { video: image }  %>
+  <% elsif image.sound_id %>
+    <%= render partial: 'search/sound_search', locals: { sound: image }  %>
+  <% else image.write_id %>
+    <%= render partial: 'search/write_search', locals: { write: image }  %>
+    <% end %>
+  <% end %>
+   <% end %>
+  </div>
+
+</div>

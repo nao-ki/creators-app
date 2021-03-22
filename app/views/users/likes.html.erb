@@ -1,0 +1,23 @@
+<div style="margin-top: 100px;">
+
+<% @likes.each do |like|  %>
+
+<% if like.image_id  %>
+<%  @image = Image.find(like.image_id) %>
+<% @user = User.find(@image.user_id) %>
+  <%= render partial: 'likes/liked_image', locals: { like: like } %>
+<% elsif like.video_id %>
+<%  @video = Video.find(like.video_id) %>
+<% @user = User.find(@video.user_id) %>
+ <%= render partial: 'likes/liked_video', locals: { like: like } %>
+<% elsif like.sound_id %>
+<%  @sound = Sound.find(like.sound_id) %>
+<% @user = User.find(@sound.user_id) %>
+ <%= render partial: 'likes/liked_sound', locals: { like: like } %>
+<% else like.write_id %>
+<%  @write = Write.find(like.write_id) %>
+<% @user = User.find(@write.user_id) %>
+ <%= render partial: 'likes/liked_write', locals: { like: like } %>
+   <% end %>
+<% end %>
+

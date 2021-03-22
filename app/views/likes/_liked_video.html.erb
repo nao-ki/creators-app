@@ -1,0 +1,45 @@
+  <div class="liked-user-wrapper">
+  <div class="like-works-wrapper">
+    <div class="wrapper-like">
+     <%# <div class="fw-btn"> %>
+    <%# <%= render "users/follow_form" %>
+    <%# </div> %>
+     <% video = Video.find(like.video_id) %>
+     <% icon = Icon.find_by(user_id: video.user.id) %>
+      <% if icon %>
+      <%= image_tag icon.icon, :size => '30', class: 'usericon' %>
+    <% else %>
+    <%= image_tag 'users.png', :size => '30', class: 'usericon'  %>
+    <% end %>
+    <div class="user-wrap-like">
+  <div class="username">
+  <%= link_to user_path(video.user.id) do %>
+  <%= video.user.nickname %>
+  <% end %>
+  </div>
+    <div class="word">
+    <%= video.user.word %>
+  </div>
+  </div>
+  </div>
+  <div id="works">
+ <video src="<%= rails_blob_path(video.video)%>" width="600px", height="600px" type="video/mp4" controlslist="nodownload type=" controls></video>
+   </div>
+   <div class="l-tcwrapper">
+       <div id="like-<%= video.id %>">
+    <%= render 'likes/video_like', { video: video} %>
+    </div>
+   </div>
+  <div id="title">
+  <%= video.title %>
+  </div>
+  <div id="content">
+  <%= video.introduction %>
+  fsdfnjsdnfjksdnbfjkbsdnkjfbsdhlbfhjbhjsdbfjhdshlfb
+  sfsdnbfsdbjfbdksbfjdsfsdfnjsdnfjksdnbfjkbsdnkjfbsdhlbfhjbhjsdbfjhdshlfb
+  sfsdnbfsdbjfbdksbfjds
+  </div>
+
+  </div>
+</div>
+</div>

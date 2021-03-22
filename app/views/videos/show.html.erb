@@ -1,0 +1,70 @@
+<p style="font-size: 20px; margin-top: 50px; margin-left:100px;">
+
+<div class="posts-wrapper-content">
+<div class="preview" id="image">
+ <% if @video.video.attached? %>
+ <video src="<%= rails_blob_path(@video.video)%>" type="video/mp4" controls></video>
+<% end %>
+</div>
+
+<div class="work-info-wrapper">
+<div class="name-word-wrapper">
+<div class="icon-wrap">
+  <% @icon = Icon.find_by(user_id: @video.user_id) %>
+    <% if @icon %>
+      <%= link_to user_path(@video.user.id) do %>
+    <%= image_tag @icon.icon, :size => '30', class: 'work-usericon' %>
+    <% end %>
+    <% else %>
+    <%= image_tag 'users.png', :size => '30', class: 'work-usericon'  %>
+    <% end %>
+  </div>
+  <div id="nw-content">
+    <div id="name-content">
+    <%= link_to user_path(@video.user.id) do %>
+   <%= @video.user.nickname %>
+   <% end %>
+    </div>
+    <div id="word-content">
+    <% if @video.user.word %>
+   <%= @video.user.word %>
+   <% else %>
+   <%= @video.user.genre %>
+   <% end %>
+    </div>
+  </div>
+</div>
+<div class="commentwritten-wrapper">
+    <div class="title-content-wrapper">
+<div id="title">
+title
+</div>
+
+<div id="content">
+content:
+
+</div>
+ <div class="work-comment-wrapper">
+    <div id="comments_area">
+        <%= render partial: 'comments/index', locals: { comments: @comments } %>
+    </div>
+  </div>
+    </div>
+</div>
+<div class="comment-create-wrapper">
+
+<% if user_signed_in?  %>
+<div class="comment-create-wrapper">
+<div class="comment-create">
+<div class="like-comment-wrap">
+<div id="like-<%= @video.id %>">
+  <%= render 'likes/video_like', { video: @video} %>
+</div>
+</div>
+<div class="c-wrapper">
+
+  <%= render partial: 'comments/form', locals: { comment: @comment, video: @video } %>
+</div>
+<% end %>
+</div>
+</div>

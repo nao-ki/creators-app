@@ -1,0 +1,41 @@
+
+<div class="sign_in-image">
+<div class="lr-form">
+<div class="back">
+</div>
+    <div class="form-box">
+        <div class="app-name">Creators</div>
+        <div class="cp-form">
+            <div class="app-cp">Your Creation Inspire the World.</div>
+            <div class="app-cp-jp">自分の作品を投稿して、世界に広めよう</div>
+        </div>
+
+        <!-- register input -->
+        <div class="signup-form">
+            <div class="input-group">
+                <!-- emailアドレス入力 -->
+<% if alert %>
+    <%= alert %>
+<% end %>
+                <%= form_for(resource, as: resource_name, url:
+        session_path(resource_name)) do |f| %>
+                    <%= f.email_field :email, class:
+        "input-field", placeholder: "メールアドレス" %>
+
+                        <!-- パスワード入力 -->
+                        <%= f.password_field :password, autocomplete: "current-password", class:
+        "input-field", placeholder: "パスワード" %>
+
+                            <div class="signup-to">新規登録は<a href="/users/sign_up">こちら</a></div>
+
+                            <div class="signup-button">
+                                <button type="submit" class="submit-btn">ログイン</button>
+                            </div>
+                            <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
