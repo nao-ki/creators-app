@@ -3,7 +3,6 @@ class HomeController < ApplicationController
 
   def index
     @writes = Write.includes(:user).order("created_at DESC").limit(6)
-
     @images = Image.order("RAND()").limit(6)
 
 
@@ -19,7 +18,7 @@ class HomeController < ApplicationController
   end
 
   def slide
-    @images = Image.includes(:user).order("RAND()").limit(6)
+    @images = Image.includes(:user).order("RANDOM()").limit(6)
   end
 
   def about
