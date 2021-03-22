@@ -48,7 +48,13 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
+#半角スペース２個分の空白を開ける
   <<: *default
-  database: creators_production
-  username: creators
-  password: <%= ENV['CREATORS_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+# production:
+#   <<: *default
+#   database: creators_production
+#   username: creators
+#   password: <%= ENV['CREATORS_DATABASE_PASSWORD'] %>
