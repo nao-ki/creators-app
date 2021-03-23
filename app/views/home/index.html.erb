@@ -1,2 +1,72 @@
 
-changed
+   <div class="home-wrapper">
+  </div>
+<div class="slideshow">
+  <div id="slider">
+  <% if @images %>
+    <% @images.each do |image| %>
+
+    <%= link_to image_path(image.id) do %>
+
+      <%= image_tag image.image, :size => '560' if image.image.attached? %>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+<div class="genre-title"> Image </div>
+<% if @notice %>
+                <%= @notice %>
+                <% end %>
+
+<div class="genre-container">
+<% @userimage.each do |image| %>
+
+<% @id = image.user_id %>
+ <% @icon = Icon.find_by(user_id: @id) %>
+ <div class="box1">
+ <div class="genre-works-wrapper">
+ <% if image.image.attached? %>
+
+ <%= image_tag image.image,  :size => '300', class: 'image' %>
+
+ <% end %>
+ <div class="icon-wrapper">
+
+ <% if @icon %>
+  <%= image_tag @icon.icon, :size => '30', class: 'usericon' %>
+ <% else %>
+ <%= image_tag 'users.png', :size => '30', class: 'usericon'  %>
+ <% end %>
+ <div class="nickname">
+ <%= link_to user_path(image.user.id) do %>
+ <%= image.user.nickname %>
+   <% end %>
+ </div>
+
+   <div class="icon-content">
+   <%= render 'users/userinfo', {image: image, userid: @id} %>
+   </div>
+</div>
+
+
+<div class="like-comment-wrapper">
+<div id="like-<%= image.id %>">
+<%= render 'likes/image_like', { image: image} %>
+</div>
+<%= link_to image_path(image.id) do %>
+<%= image_tag 'comment.svg', :size => '26' %>
+<% end %>
+</div>
+ </div>
+ <div class="gc-wrapper">
+ <div class="title">title: <%= image.title %></div>
+ <div class="content">content: <%= image.content %></div>
+ </div>
+ </div>
+ <% end %>
+ <div class="to-works">
+  <%= link_to "Image作品一覧", images_path %>
+ </div>
+</div>
+
+<% end %>
