@@ -11,13 +11,11 @@ class WritesController < ApplicationController
   end
 
   def create
-
     @write = Write.new(write_params)
-    @write.user_id = current_user.id
-
+    if @write.user_id = current_user.id
     @write.save
     redirect_to action: :index
-
+    end
   end
 
   def destroy

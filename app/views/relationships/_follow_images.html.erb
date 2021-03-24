@@ -21,7 +21,9 @@
   </div>
   </div>
   <div id="works">
-  <%= image_tag work.image, :size =>'600' %>
+   <%=  link_to @image.image, 'data-lightbox': @image.image do %>
+    <%= image_tag work.image, :size =>'600' %>
+  <% end %>
    </div>
    <div class="l-tcwrapper">
     <div id="like-<%= work.id %>">

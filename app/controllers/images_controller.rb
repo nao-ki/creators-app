@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
   end
 
   def index
-    @images = Image.includes(:user).order("created_at DESC")
+    @images = Image.order("created_at DESC")
   end
 
 

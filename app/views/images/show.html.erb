@@ -3,8 +3,12 @@
 <div class="posts-wrapper-content">
 <div class="preview" id="image">
  <% if @image.image.attached? %>
+ <%=  link_to @image.image, 'data-lightbox': @image.image do %>
   <%= image_tag @image.image, :size =>'600' %>
+  <% end %>
 <% end %>
+
+
 </div>
 
 <div class="work-info-wrapper">

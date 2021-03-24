@@ -1,7 +1,6 @@
-<div style="margin-top: 100px;">
-
+<div class="contents">
+<% if !@likes  %>
 <% @likes.each do |like|  %>
-
 <% if like.image_id  %>
 <%  @image = Image.find(like.image_id) %>
 <% @user = User.find(@image.user_id) %>
@@ -20,4 +19,9 @@
  <%= render partial: 'likes/liked_write', locals: { like: like } %>
    <% end %>
 <% end %>
-
+<% else %>
+  <div class="notyet">
+  いいねした作品はまだありません。
+  </div>
+<% end %>
+</div>

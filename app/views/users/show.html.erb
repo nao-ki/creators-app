@@ -46,8 +46,7 @@
         <%= @user.url_link %>
       </div>
       <div class="profile-info-list" id="introduction">
-        <%= @user.introduction %>safafnaklnf
-        fmkafklaklfmkafklaklfmka
+        <%= @user.introduction %>
       </div>
     </div>
     <% if current_user.id == @user.id %>
@@ -60,7 +59,7 @@
 </div>
 
   <div class="userWorks-content">
-  <div class="worksGenre">
+  <div class="worksGenre" id="gmenu">
     <ul>
       <li>
 
@@ -91,7 +90,7 @@
     </ul>
   </div>
   <div class="userWorksWrapper">
-
+<% if @allwork.present? %>
   <% @allworks.each do |work| %>
    <div class="eachWorksBox">
    <% @name = work.model_name %>
@@ -107,7 +106,11 @@
    </div>
    <% end %>
 
+   <% else %>
+   <div class="notPostyet">
+   まだ作品は投稿されていません。
+   </div>
+   <% end %>
   </div>
   </div>
-
 

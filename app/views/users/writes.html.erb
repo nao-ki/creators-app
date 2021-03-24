@@ -46,8 +46,7 @@
         <%= @user.url_link %>
       </div>
       <div class="profile-info-list" id="introduction">
-        <%= @user.introduction %>safafnaklnf
-        fmkafklaklfmkafklaklfmka
+        <%= @user.introduction %>
       </div>
     </div>
     <% if current_user.id == @user.id %>
@@ -90,14 +89,16 @@
     </ul>
   </div>
   <div class="userWritesWrapper">
-  <% if @writes %>
+  <% if @writes.present?  %>
   <% @writes.each do |write| %>
    <div class="eachWritesBox">
     <%= render partial: 'users/writes_works', locals: { write: write} %>
   </div>
   <% end %>
   <% else  %>
-  まだ画像に関する投稿はありません。
+    <div class="notPostyet" id="text">
+  まだ文章に関する作品はありません。
+  </div>
   <% end %>
   </div>
 

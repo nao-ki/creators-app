@@ -10,11 +10,6 @@ body {
     margin: 0;
 }
 
-.profile-name {
-    text-align: center;
-    font-size: 24px;
-}
-
 .profile-name .name-mr {
     font-size: 15px;
     text-align: center;
@@ -38,6 +33,7 @@ body {
     margin-bottom: 10px;
     border-radius: 50%;
     box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.28);
+    object-fit: cover;
 }
 
 .main-wrapper-profile p {

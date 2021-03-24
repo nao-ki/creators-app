@@ -1,9 +1,8 @@
 class Image < ApplicationRecord
 
-  belongs_to :user, dependent: :destroy
+  belongs_to :user
 
   has_one_attached :image, dependent: :destroy
-  # validate :image_type
 
   has_many :likes, dependent: :destroy
   has_many :likes_users, through: :likes, source: :user

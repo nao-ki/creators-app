@@ -15,7 +15,11 @@ class IconsController < ApplicationController
   end
 
   def edit
+
     @icon = Icon.find_by(user_id: params[:id])
+    if @icon.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 
   def update

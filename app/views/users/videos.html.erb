@@ -19,9 +19,9 @@
     </div>
       <%= render "follow_form" %>
     </div>
-    <!-- フォロー表示分岐 -->
+
   </div>
-  <!-- left end -->
+
   <div class="right">
     <div class="profile-info">
       <div class="profile-name"><%= @user.nickname %></div>
@@ -32,8 +32,7 @@
         <%= @user.url_link %>
       </div>
       <div class="profile-info-list" id="introduction">
-        <%= @user.introduction %>safafnaklnf
-        fmkafklaklfmkafklaklfmka
+        <%= @user.introduction %>
       </div>
     </div>
     <% if current_user.id == @user.id %>
@@ -76,14 +75,16 @@
     </ul>
   </div>
   <div class="userWorksWrapper" >
-  <% if @videos %>
+  <% if @videos.present?  %>
   <% @videos.each do |video| %>
    <div class="eachVideosBox" >
     <%= render partial: 'users/videos_works', locals: { video: video} %>
   </div>
   <% end %>
   <% else  %>
-  まだ画像に関する投稿はありません。
+    <div class="notPostyet">
+  まだ動画に関する作品はありません。
+  </div>
   <% end %>
   </div>
 

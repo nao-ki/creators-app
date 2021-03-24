@@ -1,7 +1,7 @@
-<div style="margin-top: 100px;">
-
+<div class="contents">
+<% if !@works %>
 <% @works.each do |work| %>
-<p>
+
 <% @name = work.model_name %>
 <% if @name == "Image" %>
 <%= render partial: 'relationships/follow_images', locals: { work: work } %>
@@ -15,8 +15,12 @@
  <% else @name == "Sound" %>
  <%= render partial: 'relationships/follow_sounds', locals: { work: work } %>
 <% end  %>
-</p>
+<% end %>
 
+<% else %>
+<div class="notyet">
+フォローした作品はまだありません。
+</div>
 <% end %>
 
 <div>

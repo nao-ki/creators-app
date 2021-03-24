@@ -8,6 +8,10 @@
             </div>
             <%= write.id %>
 
+            <% if user_signed_in? && current_user.id == write.user_id %>
+            <%= write.id %>
+                <%= link_to 'delete', write_path(write.id), method: :delete %>
+            <% end %>
                 <a href="/writes/<%= write.id %>">詳細ページへ</a>
                 <% if current_user.id == write.user_id %>
                 <%= link_to '削除', write_path(write.id), method: :delete %>

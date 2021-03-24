@@ -5,7 +5,7 @@
 <%= link_to 'フォロー', following_user_path(@user.id) %> (<%= @user.following.count %>)
 </div>
 
-
+<% if @users.present? %>
 <div class="followers-content">
 
 <% @user.followers.each do |user| %>
@@ -36,14 +36,14 @@
     <div class="f-introduction">
       <%= user.introduction %>
     </div>
-
 </div>
-
 </div>
-
 </div>
-
 <% end %>
-
+<% else %>
+<div class="follow-count">
+まだ<%= @user.nickname %>さんのフォロワーはいません。
+</div>
+<% end %>
 </div>
 </div>

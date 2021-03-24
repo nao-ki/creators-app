@@ -4,6 +4,7 @@
 }
 
 body {
+    background-color: rgb(245, 244, 244);
     margin: 0;
     padding: 0;
 }
@@ -353,6 +354,11 @@ span {
     padding: 4px 0;
     text-align: center;
     margin: 9px 0;
+}
+
+.edit-submit-post-profile:hover {
+    cursor: pointer;
+    background-color: rgb(96, 94, 94);
 }
 
 .post-wrapper {
@@ -1161,7 +1167,7 @@ h3 {
 /* スライドショーCSSここから*/
 
 .slideshow {
-    width: 600px;
+    width: 900px;
     // height: 500px;
     margin-top: 70px;
     margin-left: auto;
@@ -1170,7 +1176,10 @@ h3 {
     padding-top: 15px;
 }
 
-.slideshow img {}
+.slideshow img {
+    object-fit: contain;
+    width: 100%;
+}
 
 //modal-window-begin
 .button {
@@ -1945,7 +1954,7 @@ audio {
 }
 
 .about-contents {
-    margin-top: 70px;
+    // margin-top: 41px;
     margin-left: auto;
     margin-right: auto;
     width: 1000px;
@@ -1984,6 +1993,7 @@ audio {
     text-align: center;
     // background-color: blue;
     width: 100%;
+    margin-bottom: 25px;
 }
 
 .about-back {
@@ -1994,4 +2004,81 @@ audio {
     background-size: cover;
     width: 100vw;
     height: 100vh;
+}
+
+.notyet {
+    margin: 0 auto;
+    width: 500px;
+    font-size: 19px;
+}
+
+.contents {
+    margin-top: 100px;
+}
+
+.icon-post-content {
+    margin-top: 120px;
+    border-radius: 3px;
+    width: 400px;
+    height: 450px;
+    border: 1px solid rgb(199, 197, 197);
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+}
+
+.icon-circle {
+    background-color: rgb(206, 195, 195);
+    border-radius: 50%;
+    border: 1px solid rgb(175, 174, 174);
+    width: 300px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.iconform {
+    margin: 20px auto;
+    width: 240px;
+    label {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.iconsend-button {
+    margin-top: 20px;
+     :hover {
+        cursor: pointer;
+    }
+    input {
+        border-radius: 4px;
+        padding: 3px;
+        color: white;
+        background-color: #5f5f5f;
+        width: 240px;
+        border: solid 0.5px #5f5f5f;
+    }
+}
+
+.icon-circle img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+#iconimage img {
+    width: 100%;
+    max-height: -webkit-fill-available;
+    object-fit: cover;
+}
+
+.notPostyet {
+    margin-bottom: 20px;
+    font-size: 19px;
+}
+
+#text {
+    margin-left: 35px;
 }

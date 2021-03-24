@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     #@userをフォローしているユーザー
     @user  = User.find(params[:id])
 
-    @users = @user.follower_relationships.includes(:writes)
+    @users = @user.follower_relationships
   end
 
   def likes

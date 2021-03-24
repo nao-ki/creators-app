@@ -4,9 +4,7 @@
 
   <p>title:<%= image.title %></p>
   <p style="margin-bottom: 10px;">
-  <!--
-  introduxtion: <%= image.content %>
-  -->
+
   </p>
  --<%= simple_format(image.content.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "")) %>
 ----------------------------
@@ -18,7 +16,9 @@
 -------------------------------
   <p>poster:<%= image.user.nickname %></p>
   <% if image.image.attached? %>
+   <%=  link_to image.image, 'data-lightbox': image.image do %>
   <%= image_tag image.image, :size =>'300' %>
+  <% end %>
   <% end %>
 <%= link_to 'detail', image_path(image.id) %>
 <!-- like -->
@@ -33,6 +33,10 @@
 <% end %>
 <%= comment.count %>
 <!-- comment -->
+  <% if current_user.id == image.user_id %>
+  <%= image.id %>
+    <%= link_to 'delete', image_path(image.id), method: :delete %>
+  <% end %>
 <% end %>
 
 

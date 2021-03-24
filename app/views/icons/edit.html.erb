@@ -1,8 +1,43 @@
+<!---
 <h1 style="margin-top: 200px; margin-left: 200px;">ICON editページ
-
 <%= form_with model: @icon, url: icon_path(@icon.id), method: :patch, local: true  do |i| %>
   <%= i.file_field :icon %><br>
   <%= i.submit "SEND" %>
 <% end %>
-
+-->
 </h1>
+<div class="back-icon">
+  <div class="icon-post-content">
+  <%= form_with model: @icon, url: icon_path(@icon.id), method: :patch, local: true  do |i| %>
+
+  <div class="icon-circle" id="iconimage">
+<%= image_tag @icon.icon %>
+  </div>
+  <div class="iconform">
+    <label class="file-up">
+      ファイルを選択
+      <%= i.file_field :icon, id: "pac-input" %><br>
+      </label>
+
+  <div class="iconsend-button">
+
+    <%= i.submit "投稿する" %>
+    </div>
+  </div>
+  <% end %>
+  </div>
+</div>
+
+<script>
+    let image = document.getElementById("pac-input");
+    image.addEventListener("change", function(evt){
+        let file = evt.target.files;
+        let reader = new FileReader();
+        reader.readAsDataURL(file[0]);
+        reader.onload = function(){
+            let dataUrl = reader.result;
+            document.getElementById("iconimage").innerHTML = "<img src='" + dataUrl + "'>";
+        }
+    },false);
+</script>
+

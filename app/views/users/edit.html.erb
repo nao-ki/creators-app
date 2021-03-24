@@ -4,13 +4,16 @@
 <h2 class="profile-title"><%= current_user.nickname %></h2>
 <div class="edit-content">
 <div class="img_block">
-  <%= link_to icon_path(current_user.id) do %>
         <% if @usericon%>
+          <%= link_to edit_icon_path(current_user.id) do %>
         <%= image_tag @usericon.icon, :size => '160', :id => 'editicon' %>
+            <% end %>
         <% else  %>
+     <%= link_to new_icon_path do %>
         <%= image_tag 'users.png', :size => '160', :id => 'editicon' %>
         <% end %>
-    <% end %>
+       <% end %>
+
    <%# <%= u.file_field :icon %>
 </div>
     <div id="editicon-wrapper">
@@ -32,7 +35,7 @@
     </div>
     </th>
     <td>
-    <%= u.text_field :genre, :value => @user.genre, :placeholder => 'アーティスト、小説家、映像制作者' %>
+    <%= u.text_field :genre, :value => @user.genre %>
     </td>
   </tr>
   <tr>

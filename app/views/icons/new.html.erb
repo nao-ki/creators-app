@@ -1,7 +1,35 @@
-<h1 style="margin-top: 200px">ICON 画像投稿ページ</h1>
+<div class="back-icon">
+  <div class="icon-post-content">
+  <%= form_with model: @icon, local: true  do |i| %>
 
-<%= form_with model: @icon, local: true  do |i| %>
-  <%= i.file_field :icon %><br>
-  <%= i.submit "SEND" %>
-<% end %>
+  <div class="icon-circle" id="iconimage">
+
+  </div>
+  <div class="iconform">
+    <label class="file-up">
+      ファイルを選択
+      <%= i.file_field :icon, id: "pac-input" %><br>
+      </label>
+
+  <div class="iconsend-button">
+
+    <%= i.submit "投稿する" %>
+    </div>
+  </div>
+  <% end %>
+  </div>
+</div>
+
+<script>
+    let image = document.getElementById("pac-input");
+    image.addEventListener("change", function(evt){
+        let file = evt.target.files;
+        let reader = new FileReader();
+        reader.readAsDataURL(file[0]);
+        reader.onload = function(){
+            let dataUrl = reader.result;
+            document.getElementById("iconimage").innerHTML = "<img src='" + dataUrl + "'>";
+        }
+    },false);
+</script>
 
