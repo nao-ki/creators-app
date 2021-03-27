@@ -92,6 +92,10 @@ header .global-nav {
     // left: 40px;
     top: 50px;
     right: 10px;
+    li:hover {
+        background-color: rgb(245, 245, 245);
+        width: 85%;
+    }
 }
 
 .usercontent li {

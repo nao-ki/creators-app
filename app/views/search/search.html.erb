@@ -19,8 +19,8 @@
     <%= render partial: 'search/video_search', locals: { video: image }  %>
   <% elsif image.sound_id %>
     <%= render partial: 'search/sound_search', locals: { sound: image }  %>
-  <% else image.write_id %>
-    <%= render partial: 'search/write_search', locals: { write: image }  %>
+  <% else image.sentence_id %>
+    <%= render partial: 'search/sentence_search', locals: { sentence: image }  %>
     <% end %>
   <% end %>
    <% end %>

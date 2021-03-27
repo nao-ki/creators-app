@@ -8,7 +8,7 @@ class User < ApplicationRecord
  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-has_many :writes,  dependent: :destroy
+has_many :sentences,  dependent: :destroy
 has_many :comments
 
 validates :nickname, presence: :true
@@ -36,7 +36,7 @@ has_many_attached :images, dependent: :destroy
 
 # いいね関連
 has_many :likes, dependent: :destroy
-has_many :likes_writes, through: :likes, source: :write
+has_many :likes_sentences, through: :likes, source: :sentence
 has_many :likes_images, through: :likes, source: :image
 has_many :likes_videos, through: :likes, source: :video
 has_many :likes_sounds, through: :likes, source: :sound
@@ -64,8 +64,8 @@ def unfollow(user)
   following_relationships.find_by(following_id: user.id).destroy
 end
 
-def already_liked?(write)
-  self.likes.exists?(write_id: write.id)
+def already_liked?(sentence)
+  self.likes.exists?(sentence_id: sentence.id)
 end
 
 end

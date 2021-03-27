@@ -13,10 +13,10 @@
 <%  @sound = Sound.find(like.sound_id) %>
 <% @user = User.find(@sound.user_id) %>
  <%= render partial: 'likes/liked_sound', locals: { like: like } %>
-<% else like.write_id %>
-<%  @write = Write.find(like.write_id) %>
-<% @user = User.find(@write.user_id) %>
- <%= render partial: 'likes/liked_write', locals: { like: like } %>
+<% else like.sentence_id %>
+<%  @sentence = Sentence.find(like.sentence_id) %>
+<% @user = User.find(@sentence.user_id) %>
+ <%= render partial: 'likes/liked_sentence', locals: { like: like } %>
    <% end %>
 <% end %>
 <% else %>

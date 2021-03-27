@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/slide' => 'home#slide'
   get '/about'=> 'home#about'
 
-  resources :writes do
+  resources :sentences do
     resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
   end
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     get 'images' => 'users#images'
     get 'videos' => 'users#videos'
     get 'sounds' => 'users#sounds'
-    get 'writes' => 'users#writes'
+    get 'sentences' => 'users#sentences'
     get '/likes' => 'users#likes'
     get '/following_works' => 'users#following_works'
     member do

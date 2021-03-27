@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_21_104425) do
+ActiveRecord::Schema.define(version: 2021_03_26_133320) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_03_21_104425) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "text"
-    t.integer "write_id"
+    t.integer "sentence_id"
     t.integer "image_id"
     t.integer "video_id"
     t.integer "sound_id"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2021_03_21_104425) do
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "write_id"
+    t.bigint "sentence_id"
     t.bigint "image_id"
     t.bigint "sound_id"
     t.bigint "video_id"
@@ -67,15 +67,15 @@ ActiveRecord::Schema.define(version: 2021_03_21_104425) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["image_id"], name: "index_likes_on_image_id"
+    t.index ["sentence_id"], name: "index_likes_on_sentence_id"
     t.index ["sound_id"], name: "index_likes_on_sound_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
     t.index ["video_id"], name: "index_likes_on_video_id"
-    t.index ["write_id"], name: "index_likes_on_write_id"
   end
 
   create_table "post_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "image_id"
-    t.integer "write_id"
+    t.integer "sentence_id"
     t.integer "sound_id"
     t.integer "video_id"
     t.integer "tag_id"
@@ -91,6 +91,15 @@ ActiveRecord::Schema.define(version: 2021_03_21_104425) do
     t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
   end
 
+  create_table "sentences", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.string "summary"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sounds", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "content"
@@ -100,7 +109,7 @@ ActiveRecord::Schema.define(version: 2021_03_21_104425) do
   end
 
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -128,19 +137,10 @@ ActiveRecord::Schema.define(version: 2021_03_21_104425) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "writes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
-    t.string "content", default: "", null: false
-    t.string "summary"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "likes", "images"
+  add_foreign_key "likes", "sentences"
   add_foreign_key "likes", "sounds"
   add_foreign_key "likes", "users"
   add_foreign_key "likes", "videos"
-  add_foreign_key "likes", "writes"
 end

@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: rgb(245, 244, 244);
+    background-color: rgb(252, 252, 252);
     margin: 0;
     padding: 0;
 }
@@ -352,8 +352,10 @@ span {
     font-size: 14px;
     text-align: center;
     padding: 4px 0;
-    text-align: center;
-    margin: 9px 0;
+    margin: 19px 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 .edit-submit-post-profile:hover {
@@ -1392,7 +1394,7 @@ ul {
     padding: 4px 5px;
 }
 
-.information-content #write_title {
+.information-content #sentence_title {
     padding: 4px;
 }
 
@@ -1437,7 +1439,7 @@ input[type="file"] {
     border-radius: 1px;
     height: 400px;
     margin: 0 auto;
-    padding: 3px;
+    padding: 4px 5px;
     resize: none;
 }
 
@@ -1450,13 +1452,13 @@ input[type="file"] {
     width: 80%;
 }
 
-.write-content {
+.sentence-content {
     margin-left: 30px;
     width: 700px;
     height: 600px;
 }
 
-textarea[name="write[content]"] {
+textarea[name="sentence[content]"] {
     border: solid 0.1px rgb(214, 214, 214);
     width: 100%;
     padding: 3px;
@@ -1600,14 +1602,12 @@ textarea[name="write[content]"] {
 
 #comment_text {
     border: none;
-    border-bottom: 1px solid black;
     resize: none;
     width: 100%;
     height: 30px;
     font-size: 16px;
     margin-top: 3px;
     background-color: rgba(247, 247, 247, 0.062);
-    // padding-left: 4px;
 }
 
 .comment-do input {
@@ -1628,7 +1628,12 @@ textarea {
 }
 
 .comment-wrap {
-    height: 39px;
+    height: 31px;
+    border-bottom: 1px solid #d4d4d4;
+    textarea {
+        padding-left: 5px;
+        padding-top: 1.5px;
+    }
 }
 
 .comment-do {
@@ -1655,7 +1660,7 @@ textarea {
 .name-word-wrapper {
     // height: 68px;
     display: flex;
-    border-bottom: solid 1px gray;
+    border-bottom: solid 1px #d4d4d4;
     padding-top: 5px;
 }
 
@@ -1699,12 +1704,11 @@ textarea {
 
 .like-comment-wrap {
     background-color: white;
-    border-bottom: 0.5px solid rgb(165, 165, 165);
+    border-bottom: 0.5px solid #d4d4d4;
     height: 30px;
 }
 
 .comment-submit:hover {
-    // background-color: rgb(235, 228, 228);
     cursor: pointer;
 }
 
@@ -1742,7 +1746,7 @@ textarea {
     }
 }
 
-.like-works-wrapper-write {
+.like-works-wrapper-sentence {
     margin: 20px auto;
     border-radius: 3px;
     width: 600px;
@@ -1750,7 +1754,7 @@ textarea {
     border: solid 1px rgb(197, 197, 197);
 }
 
-.wrapper-like-write {
+.wrapper-like-sentence {
     border-bottom: solid 1px rgb(143, 142, 142);
     min-height: 50px;
     margin-bottom: 10px;
@@ -1798,11 +1802,11 @@ video {
     background-image: url("assets/images/sound-only.jpg");
 }
 
-.write_content {
+.sentence_content {
     width: 600px;
 }
 
-#writes {
+#sentences {
     font-family: '游明朝', 'Yu Mincho', YuMincho, 'Hiragino Mincho Pro', serif;
     padding: 0 10px;
     margin: 5px;
@@ -1899,9 +1903,9 @@ audio {
     width: 100%;
 }
 
-.tagedBox img {
+.tagedBox .works img {
     width: 100%;
-    // object-fit: contain;
+    object-fit: contain;
     // height: auto;
 }
 
@@ -2081,4 +2085,42 @@ audio {
 
 #text {
     margin-left: 35px;
+}
+
+.post-date {
+    font-size: 11px;
+    color: gray;
+    float: right;
+    margin-top: 5px;
+}
+
+.sounds_contents {
+    border: solid 1px #c9c9c9;
+    padding: 10px 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.soundWorksWrapper {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    audio {
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+    #title-work {
+        margin-left: 17px;
+    }
+}
+
+.works-title {
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+    margin-top: 40px;
+    text-align: center;
 }

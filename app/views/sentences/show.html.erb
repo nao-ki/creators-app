@@ -3,16 +3,16 @@
 <div class="posts-wrapper-content">
 
 <div class="preview-text" id="image">
-<%= @writes.content %>
+<%= @sentences.content %>
 
 </div>
 
 <div class="work-info-wrapper">
 <div class="name-word-wrapper">
 <div class="icon-wrap">
-  <% @icon = Icon.find_by(user_id: @writes.user_id) %>
+  <% @icon = Icon.find_by(user_id: @sentences.user_id) %>
     <% if @icon %>
-      <%= link_to user_path(@writes.user.id) do %>
+      <%= link_to user_path(@sentences.user.id) do %>
     <%= image_tag @icon.icon, :size => '30', class: 'work-usericon' %>
     <% end %>
     <% else %>
@@ -21,15 +21,15 @@
   </div>
   <div id="nw-content">
     <div id="name-content">
-    <%= link_to user_path(@writes.user.id) do %>
-   <%= @writes.user.nickname %>
+    <%= link_to user_path(@sentences.user.id) do %>
+   <%= @sentences.user.nickname %>
    <% end %>
     </div>
     <div id="word-content">
-    <% if @writes.user.word %>
-   <%= @writes.user.word %>
+    <% if @sentences.user.word %>
+   <%= @sentences.user.word %>
    <% else %>
-   <%= @writes.user.genre %>
+   <%= @sentences.user.genre %>
    <% end %>
     </div>
   </div>
@@ -37,11 +37,14 @@
 <div class="commentwritten-wrapper">
     <div class="title-content-wrapper">
 <div id="title">
-<%= @writes.title %>
+<%= @sentences.title %>
+       <div class="post-date">
+    <%= @sentences.created_at.strftime("%Y/%m/%d") %>
+    </div>
 </div>
 
 <div id="content">
-<%= @writes.summary %>
+<%= @sentences.summary %>
 
 </div>
  <div class="work-comment-wrapper">
@@ -57,13 +60,13 @@
 <div class="comment-create-wrapper">
 <div class="comment-create">
 <div class="like-comment-wrap">
-<div id="like-<%= @writes.id %>">
-  <%= render 'likes/write_like', { write: @writes} %>
+<div id="like-<%= @sentences.id %>">
+  <%= render 'likes/sentence_like', { sentence: @sentences} %>
 </div>
 </div>
 <div class="c-wrapper">
 
-  <%= render partial: 'comments/form', locals: { comment: @comment, write: @writes } %>
+  <%= render partial: 'comments/form', locals: { comment: @comment, sentence: @sentences } %>
 </div>
 <% end %>
 </div>

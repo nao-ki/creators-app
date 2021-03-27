@@ -9,8 +9,8 @@
 <% elsif @name == "Video" %>
 <%= render partial: 'relationships/follow_videos', locals: { work: work } %>
 
- <% elsif @name == "Write" %>
-<%= render partial: 'relationships/follow_writes', locals: { work: work } %>
+ <% elsif @name == "Sentence" %>
+<%= render partial: 'relationships/follow_sentences', locals: { work: work } %>
 
  <% else @name == "Sound" %>
  <%= render partial: 'relationships/follow_sounds', locals: { work: work } %>

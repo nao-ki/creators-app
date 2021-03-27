@@ -23,13 +23,13 @@ class UsersController < ApplicationController
   def show
       @user  = User.find(params[:id])
       @usericon = Icon.find_by(user_id: @user.id)
-      @writes = @user.writes
+      @sentences = @user.sentences
 
       @image = Image.where(user_id: @user.id).order("created_at DESC")
       @video = Video.where(user_id: @user.id).order("created_at DESC")
       @sound = Sound.where(user_id: @user.id).order("created_at DESC")
-      @write = Write.where(user_id: @user.id).order("created_at DESC")
-      @allworks = (@image + @video + @sound + @write).sort_by{|record| record.created_at}.reverse!
+      @sentence = Sentence.where(user_id: @user.id).order("created_at DESC")
+      @allworks = (@image + @video + @sound + @sentence).sort_by{|record| record.created_at}.reverse!
   end
 
   def following
@@ -58,9 +58,9 @@ def following_works
   @video = Video.where(user_id: @fuser.ids).order("created_at DESC")
   @image = Image.where(user_id: @fuser.ids).order("created_at DESC")
   @sound = Sound.where(user_id: @fuser.ids).order("created_at DESC")
-  @write = Write.where(user_id: @fuser.ids).order("created_at DESC")
+  @sentence = Sentence.where(user_id: @fuser.ids).order("created_at DESC")
 
-  @works = (@video + @image + @sound + @write).sort_by{|record| record.created_at}.reverse!
+  @works = (@video + @image + @sound + @sentence).sort_by{|record| record.created_at}.reverse!
 
 end
 
@@ -82,10 +82,10 @@ end
       @sounds = Sound.where(user_id: @user.id)
     end
 
-    def writes
+    def sentences
       @user = User.find(params[:user_id])
       @usericon = Icon.find_by(user_id: @user.id)
-      @writes = Write.where(user_id: @user.id)
+      @sentences = Sentence.where(user_id: @user.id)
     end
 
   private

@@ -5,8 +5,8 @@
     <div class="fw-btn">
     <%# <%= render "users/follow_form" %>
     </div>
-     <% write = Write.find(like.write_id) %>
-     <% icon = Icon.find_by(user_id: write.user.id) %>
+     <% sentence = Sentence.find(like.sentence_id) %>
+     <% icon = Icon.find_by(user_id: sentence.user.id) %>
       <% if icon %>
       <%= image_tag icon.icon, :size => '30', class: 'usericon' %>
     <% else %>
@@ -14,34 +14,34 @@
     <% end %>
      <div class="user-wrap-like">
   <div class="username">
-  <%= link_to user_path(write.user.id) do %>
-  <%= write.user.nickname %>
+  <%= link_to user_path(sentence.user.id) do %>
+  <%= sentence.user.nickname %>
   <% end %>
   </div>
     <div class="word">
-    <%= write.user.word %>
+    <%= sentence.user.word %>
   </div>
   </div>
   </div>
   <div id="works" >
 
-<div class="write_content">
-<div id="writes">
-  <%= write.content %>adjanfla
+<div class="sentence_content">
+<div id="sentences">
+  <%= sentence.content %>adjanfla
 
   </div>
   </div>
    </div>
    <div class="l-tcwrapper">
-    <div id="like-<%= write.id %>">
-    <%= render 'likes/write_like', { write: write} %>
+    <div id="like-<%= sentence.id %>">
+    <%= render 'likes/sentence_like', { sentence: sentence} %>
     </div>
    </div>
   <div id="title">
-  <%= write.title %>
+  <%= sentence.title %>
   </div>
   <div id="content">
-  <%= write.summary %>
+  <%= sentence.summary %>
 
   </div>
 

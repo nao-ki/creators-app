@@ -55,9 +55,8 @@
     </a>
     <% end %>
   </div>
-
 </div>
-
+<h2 class="works-title">Works</h2>
   <div class="userWorks-content">
   <div class="worksGenre">
     <ul>
@@ -82,24 +81,31 @@
       <% end %>
       </li>
       <li>
-     <%= link_to  user_writes_path(current_user.id) do %>
+     <%= link_to  user_sentences_path(current_user.id) do %>
      文字
       <% end %>
       </li>
     </ul>
   </div>
-  <div class="userWorksWrapper">
+
+  <div class="soundWorksWrapper">
   <% if @sounds.present?  %>
-  <% @sounds.each do |sound| %>
-   <div class="eachWorksBox">
-    <%= render partial: 'users/sounds_works', locals: { sound: sound} %>
+   <% @sounds.each do |sound| %>
+   <div class="sounds_contents">
+ <%= link_to sound_path(sound.id) do %>
+  <audio src="<%= rails_blob_path(sound.sound) %>" controlslist="nodownload type=" type="video/mp4" controls></audio>
+
+  <div id="title-work">
+    <%= sound.title %>
   </div>
+  <% end %>
+    <!--
+      <%= render partial: 'users/sounds_works', locals: { sound: sound} %>
+      -->
+ </div>
   <% end %>
   <% else  %>
     <div class="notPostyet">
   まだ音/音楽に関する作品はありません。
   </div>
   <% end %>
-  </div>
-
-

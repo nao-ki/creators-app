@@ -1,6 +1,6 @@
-<% if @write %>
+<% if @sentence %>
 
- $("#like-<%= @write.id %>").html("<%= j(render partial: 'write_like', locals: { write: @write }) %>");
+ $("#like-<%= @sentence.id %>").html("<%= j(render partial: 'sentence_like', locals: { sentence: @sentence }) %>");
 
 <% elsif @video %>
 

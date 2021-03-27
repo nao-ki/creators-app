@@ -1,6 +1,6 @@
-<% if @writes %>
+<% if @sentences %>
 
-<%= form_with(model: [write, comment], url: write_comments_path(write) ) do |f| %>
+<%= form_with(model: [sentence, comment], url: sentence_comments_path(sentence) ) do |f| %>
     <%= f.text_area :text,  placefolder: 'comment' %>
      <div class="comment-do">
     <%= f.submit "コメントする", class: "comment-submit" %>

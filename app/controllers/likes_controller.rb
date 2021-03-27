@@ -4,10 +4,10 @@ class LikesController < ApplicationController
 
   def create
 
-if @write
-  @like = current_user.likes.new(write_id: @write.id)
+if @sentence
+  @like = current_user.likes.new(sentence_id: @sentence.id)
   @like.save
-  @likes = Like.where(write_id: @write.id)
+  @likes = Like.where(sentence_id: @sentence.id)
 elsif @image
   @like = Like.new(image_id: @image.id, user_id: current_user.id).save
   @likes = Like.where(image_id: @image.id)
@@ -24,9 +24,9 @@ end
   end
 
   def destroy
-    if @write
-      @like = Like.find_by(write_id: @write.id, user_id: current_user.id).destroy!
-      @likes = Like.where(write_id: @write.id)
+    if @sentence
+      @like = Like.find_by(sentence_id: @sentence.id, user_id: current_user.id).destroy!
+      @likes = Like.where(sentence_id: @sentence.id)
     elsif @image
       @like = Like.find_by(image_id: @image.id, user_id: current_user.id).destroy!
       @likes = Like.where(image_id: @image.id)
@@ -43,14 +43,14 @@ end
   private
 
   def like_params
-    params.require(:like).permit(:write_id, :image_id, :video_id, :sound_id)
+    params.require(:like).permit(:sentence_id, :image_id, :video_id, :sound_id)
   end
 
 
   def set_post
     @path = request.fullpath
-  if @path.include?("writes")
-    @write = Write.find(params[:write_id])
+  if @path.include?("sentences")
+    @sentence = Sentence.find(params[:sentence_id])
     elsif @path.include?("images")
     @image = Image.find(params[:image_id])
     elsif @path.include?("video")

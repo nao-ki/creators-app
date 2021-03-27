@@ -13,27 +13,13 @@
     <div class="one-word">
       <%= @user.word %>
     </div>
-    <!-- フォロー表示分岐 -->
-    <!--
-    <div class="follower">
-      <%= link_to followers_user_path(@user.id) do %>
-      <h5 style="color: black">フォロワー
-        <%= @user.followers.count %>人</h5>
-      <% end %>
-    </div>
-    <div class="follow">
-      <%= link_to following_user_path(@user.id) do %>
-      <h5 style="color: black">フォロー
-        <%= @user.following.count %>人</h5>
-      <% end %>
-    </div>
-    -->
+
     <div>
     <div class="count">
     </div>
       <%= render "follow_form" %>
     </div>
-    <!-- フォロー表示分岐 -->
+
   </div>
   <!-- left end -->
   <div class="right">
@@ -58,6 +44,7 @@
 
 </div>
 
+<h2 class="works-title">Works</h2>
   <div class="userWorks-content">
   <div class="worksGenre" id="gmenu">
     <ul>
@@ -83,14 +70,14 @@
       <% end %>
       </li>
       <li>
-     <%= link_to  user_writes_path(current_user.id) do %>
+     <%= link_to  user_sentences_path(current_user.id) do %>
      文字
      </li>
       <% end %>
     </ul>
   </div>
   <div class="userWorksWrapper">
-<% if @allwork.present? %>
+<% if !@allwork %>
   <% @allworks.each do |work| %>
    <div class="eachWorksBox">
    <% @name = work.model_name %>
@@ -98,10 +85,12 @@
     <%= render partial: 'users/images_works', locals: { image: work} %>
     <% elsif @name == "Video" %>
     <%= render partial: 'users/videos_works', locals: { video: work} %>
-    <% elsif @name == "Write" %>
-   <%= render partial: 'users/writes_works', locals: { write: work} %>
+    <% elsif @name == "Sentence" %>
+   <%= render partial: 'users/sentences_works', locals: { sentence: work} %>
     <% else @name == "Sound" %>
+
     <%= render partial: 'users/sounds_works', locals: { sound: work} %>
+
     <% end %>
    </div>
    <% end %>

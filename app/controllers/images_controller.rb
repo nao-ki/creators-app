@@ -2,7 +2,6 @@ class ImagesController < ApplicationController
 
   def new
     @image = Image.new
-
   end
 
   def index
@@ -49,7 +48,7 @@ class ImagesController < ApplicationController
 
   def update
     @image = Image.find(params[:id])
-    @image.update params.require(:image).permit(:title, :content, :image) # POINT
+    @image.update params.require(:image).permit(:title, :content, :image)
     redirect_to @image
   end
 

@@ -41,6 +41,9 @@
     <div class="title-content-wrapper">
 <div id="title">
 <%= @sound.title %>
+       <div class="post-date">
+    <%= @sound.created_at.strftime("%Y/%m/%d") %>
+    </div>
 </div>
 
 <div id="content">

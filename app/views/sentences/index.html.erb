@@ -1,0 +1,22 @@
+<div class="cover" style="margin-top: 300px">
+    <tbody>
+        <% @sentence.each do |sentence| %>
+            <%= sentence.title %>
+            <%= sentence.content %>
+            <div id="like-<%= sentence.id %>">
+            <%= render 'likes/sentence_like', { sentence: sentence} %>
+            </div>
+            <%= sentence.id %>
+
+            <% if user_signed_in? && current_user.id == sentence.user_id %>
+            <%= sentence.id %>
+                <%= link_to 'delete', sentence_path(sentence.id), method: :delete %>
+            <% end %>
+                <a href="/sentences/<%= sentence.id %>">詳細ページへ</a>
+                <% if current_user.id == sentence.user_id %>
+                <%= link_to '削除', sentence_path(sentence.id), method: :delete %>
+                <% end %>
+                <% end %>
+
+    </tbody>
+</div>

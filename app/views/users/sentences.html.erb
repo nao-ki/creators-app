@@ -57,7 +57,7 @@
   </div>
 
 </div>
-
+<h2 class="works-title">Works</h2>
   <div class="userWorks-content">
   <div class="worksGenre">
     <ul>
@@ -82,17 +82,17 @@
       <% end %>
       </li>
       <li>
-     <%= link_to  user_writes_path(current_user.id) do %>
+     <%= link_to  user_sentences_path(current_user.id) do %>
      文字
       <% end %>
       </li>
     </ul>
   </div>
-  <div class="userWritesWrapper">
-  <% if @writes.present?  %>
-  <% @writes.each do |write| %>
-   <div class="eachWritesBox">
-    <%= render partial: 'users/writes_works', locals: { write: write} %>
+  <div class="userSentencesWrapper">
+  <% if @sentences.present?  %>
+  <% @sentences.each do |sentence| %>
+   <div class="eachSentencesBox">
+    <%= render partial: 'users/sentences_works', locals: { sentence: sentence} %>
   </div>
   <% end %>
   <% else  %>

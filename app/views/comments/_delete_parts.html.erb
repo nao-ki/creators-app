@@ -1,5 +1,5 @@
-  <% if request.path.include?("writes") %>
-  <%= link_to write_comment_path(comment.write_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+  <% if request.path.include?("sentences") %>
+  <%= link_to sentence_comment_path(comment.sentence_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
  <%= image_tag 'clear.png', :size => '14' %>
   <% end %>
   <% elsif request.path.include?("images") %>

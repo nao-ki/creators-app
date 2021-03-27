@@ -21,11 +21,9 @@ class Image < ApplicationRecord
   end
 
   after_create do
-    #1.controller側でcreateしたTweetを取得
+
     image = Image.find_by(id: self.id)
-    #2.正規表現を用いて、Tweetのtext内から『#○○○』の文字列を検出
     tags  = self.content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
-    #3.mapメソッドでtags配列の要素一つ一つを取り出して、先頭の#を取り除いてDBへ保存する
     tags.uniq.map do |t|
       tag = Tag.find_or_create_by(name: t.downcase.delete('#'))
       image.tags << tag

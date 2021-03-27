@@ -1,10 +1,10 @@
 <div class="text-content-wrapper">
-    <%= form_tag("/writes/#{@writes.id}", method: :patch) do %>
+    <%= form_tag("/sentences/#{@sentences.id}", method: :patch) do %>
         <h3>投稿する</h3>
         <div class="text-content-form">
-            <input class="text-title" placeholder="タイトル" type="text" name="title" value="<%= @writes.title %>" />
+            <input class="text-title" placeholder="タイトル" type="text" name="title" value="<%= @sentences.title %>" />
             <textarea cols="30" name="content" type="text" class="text-form" placeholder="本文" rows="10">
-<%= @writes.content %></textarea
+<%= @sentences.content %></textarea
     >
     <textarea
       cols="30"
@@ -14,7 +14,7 @@
       placeholder="あらすじ"
       rows="10"
     >
-<%= @writes.summary %></textarea
+<%= @sentences.summary %></textarea
     >
     <input type="submit" value="編集完了" />
   </div>

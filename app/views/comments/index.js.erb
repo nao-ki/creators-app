@@ -1,5 +1,5 @@
-<% if @write %>
-$("#comments_area").html("<%= j(render 'index', { comments: @comment.write.comments.order("created_at DESC") }) %>")
+<% if @sentence %>
+$("#comments_area").html("<%= j(render 'index', { comments: @comment.sentence.comments.order("created_at DESC") }) %>")
 $("textarea").val('')
 <% elsif @image %>
 $("#comments_area").html("<%= j(render 'index', { comments: @comment.image.comments.order("created_at DESC") }) %>")

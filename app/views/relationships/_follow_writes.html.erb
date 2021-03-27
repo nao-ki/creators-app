@@ -1,8 +1,8 @@
   <div class="liked-user-wrapper">
-  <div class="like-works-wrapper-write">
-    <div class="wrapper-like-write">
+  <div class="like-works-wrapper-sentence">
+    <div class="wrapper-like-sentence">
 
-     <% work = Write.find(work.id) %>
+     <% work = Sentence.find(work.id) %>
      <% icon = Icon.find_by(user_id: work.user.id) %>
       <% if icon %>
       <%= image_tag icon.icon, :size => '30', class: 'usericon' %>
@@ -25,7 +25,7 @@
    </div>
    <div class="l-tcwrapper">
  <div id="like-<%= work.id %>">
-  <%= render 'likes/write_like', { write: work} %>
+  <%= render 'likes/sentence_like', { sentence: work} %>
 </div>
    </div>
   <div id="title">

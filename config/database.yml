@@ -50,10 +50,10 @@ test:
 production:
 #半角スペース２個分の空白を開ける
 # ↓デプロイの時、コメントアウト↓
-  <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+  # <<: *default
+  # adapter: postgresql
+  # encoding: unicode
+  # pool: 5
 
 # production:
 #   <<: *default

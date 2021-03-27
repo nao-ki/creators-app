@@ -55,7 +55,7 @@
       <% end %>
      </div>
   <div class="header-button">
-      <%= link_to writes_path do %>
+      <%= link_to sentences_path do %>
             <%= image_tag 'pen.png', :size=> "50x50" %>
       <% end %>
   </div>
@@ -66,16 +66,18 @@
 <% end %>
 <%  end %>
      </div>
-<div class="header-button followers">
-    <% if current_user %>
-    <%= link_to following_user_path(current_user.id)  do %>
-      <%= image_tag 'users2.png', :size=> "35x35" %>
-    <% end %>
-    <% end %>
-    </div>
+  <%= link_to  user_following_works_path(current_user.id) do %>
+    <div class="header-button header-post" >
+
+        FollowingWorks
+
+     </div>
+     <% end %>
       <div class="header-nav-item">
         <div class="header-button header-post" id="openModal">Create!</div>
       </div>
+
+
 
       <div id="modalArea" class="modalArea">
   <div id="modalBg" class="modalBg"></div>
@@ -102,13 +104,24 @@
       <div class="usercontent">
       <ul>
          <li>
-       <%= link_to 'プロフィール', user_path(current_user.id) %>
+       <%= link_to  user_path(current_user.id) do %>
+       <%= image_tag 'users.png', :size => '20' %>
+
+       プロフィール
+
+       <% end %>
        </li>
        <li>
-       <%= link_to 'フォロー作品', user_following_works_path(current_user.id) %>
+        <%= link_to following_user_path(current_user.id) do %>
+        <%= image_tag 'users.png', :size => '20' %>
+        フォロワー
+        <% end %>
        </li>
-       <li>
-       <%= link_to 'いいね', user_likes_path(current_user.id) %>
+         <li>
+        <%= link_to user_likes_path(current_user.id) do %>
+        <%= image_tag 'like.png', :size => '20' %>
+        いいね
+        <% end %>
        </li>
        <li>
        <%= link_to 'about', about_path %>
