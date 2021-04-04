@@ -7,7 +7,7 @@ class Image < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :likes_users, through: :likes, source: :user
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
 
   has_many :post_tags, dependent: :destroy
@@ -21,7 +21,6 @@ class Image < ApplicationRecord
   end
 
   after_create do
-
     image = Image.find_by(id: self.id)
     tags  = self.content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     tags.uniq.map do |t|

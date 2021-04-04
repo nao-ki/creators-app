@@ -1,9 +1,9 @@
 <div class="posts-wrapper-content">
 　<div class="preview" id="image">
-  <%= form_with model: @sentence, local: true  do |w| %>
+  <%= form_with model: @sentence, local: true do |s| %>
 
   <div class="sentence-content">
-    <%= w.text_area :content, placefolder: "story" %>
+    <%= s.text_area :content, placefolder: "story" %>
   </div>
   </div>
   <div class="information-content">
@@ -11,13 +11,14 @@
   <div class="title-form">
   :タイトルを入力してください
   </div>
-    <%= w.text_field :title %>
+    <%= s.text_field :title %>
   <div class="content-wrapper">
   :内容を入力してください。
   </div>
-    <%= w.text_area :summary, class: 'content-form' %>
-    <%= w.submit "投稿する", class: 'send-button' %>
-  <% end %>
+    <%= s.text_area :summary, class: 'content-form' %>
+    <%= s.submit "投稿する", class: 'send-button' %>
+
   </div>
+    <% end %>
   </div>
 </div>

@@ -13,13 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-.slick-next {
-    right: 10px !important;
-    z-index: 100;
-}
-
-.slick-prev {
-    left: 10px !important;
-    z-index: 100;
-}

@@ -1,11 +1,24 @@
+
 <h2 class="profile-title">Profile</h2>
+<% unless @user.id == current_user.id %>
+  <% if @isRoom == true %>
+    <%= link_to "チャットへGo!", room_path(@roomId) %>
+  <% else %>
+    <%= form_for @room do |f| %>
+      <%= fields_for @entry do |e| %>
+        <%= e.hidden_field :user_id, :value=> @user.id %>
+      <% end %>
+      <%= f.submit "チャットを始める" %>
+    <% end %>
+  <% end %>
+<% end %>
 
 <div class="profile-wrapper">
   <div class="left">
   <% if @usericon%>
  <%= image_tag @usericon.icon, :size => '80' %>
  <% else  %>
- <%= image_tag 'users.png', :size => '80' %>
+ <%= image_tag 'user.png', :size => '80' %>
  <% end %>
     <div class="artist-genre">
       <%= @user.genre %>
@@ -36,9 +49,10 @@
       </div>
     </div>
     <% if current_user.id == @user.id %>
-    <a href="/users/<%= @user.id %>/edit">
+
+    <%= link_to edit_user_path(@user.id) do %>
       <div class="edit-submit-post-profile">プロフィール編集</div>
-    </a>
+    <% end %>
     <% end %>
   </div>
 

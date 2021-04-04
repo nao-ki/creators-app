@@ -1,6 +1,12 @@
+<% if image.image.attached? %>
+<%= link_to  image_path(image.id) do %>
 <%= image_tag image.image, :size => '250' %>
+<% end %>
+
+<% end %>
 <div id="title-work">
+
 <%= image.title %>
+
 </div>
 
-<%# <%= image.title %>

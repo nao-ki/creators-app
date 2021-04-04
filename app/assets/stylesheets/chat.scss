@@ -1,0 +1,121 @@
+.chatContent {
+    width: 1000px;
+    margin: 80px auto 0 auto;
+    #memberT {
+        margin-left: 30px;
+        // font-style: italic;
+        font-size: 20px;
+    }
+}
+
+.chats-wrapper {
+    margin: 0 auto;
+    height: 580px;
+    position: relative;
+    border-radius: 4px;
+    border: solid 1px rgb(199, 196, 196);
+}
+
+.chats-inside {
+    margin: 10px;
+    background-color: rgb(247, 247, 247);
+    height: 510px;
+    overflow: scroll;
+    box-shadow: 0px 0px 12px 0px rgb(240, 240, 240) inset;
+    z-index: 1000px;
+}
+
+.chatterName {
+    border-radius: 3px;
+    padding: 1px 10px;
+}
+
+.chatContent {
+    margin-top: 78px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#each-say {
+    background-color: rgb(215, 221, 215);
+    border: solid 1px rgb(199, 196, 196);
+    border-radius: 3px;
+    margin: 0 7px 10px 7px;
+    padding: 4px 10px;
+    max-width: max-content;
+}
+
+.form-message {
+    position: absolute;
+    width: 100%;
+    // bottom: 0;
+    margin: 4px 20px 10px 20px;
+    form input {
+        border-radius: 13px;
+        border: solid 1px rgb(170, 168, 168);
+        width: 96%;
+        padding: 4px 10px;
+        font-size: 16px;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+}
+
+#chat-input::placeholder {
+    color: rgb(185, 183, 183);
+}
+
+.chatuser-wrap {
+    display: flex;
+}
+
+.toChatUser-content {
+    border: 1px solid rgb(199, 196, 196);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    #iconwrap {
+        margin: 5px;
+        height: 50px;
+        width: 50px;
+    }
+}
+
+.userChatWrap {
+    margin-left: 4px;
+    padding: 3px 0;
+    #nickname {
+        font-size: 18px;
+    }
+    #word {
+        color: #8a8888;
+        font-size: 15px;
+    }
+}
+
+.chat-list-wrapper {
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 4px;
+    padding: 5px 0;
+    .eachuser {
+        border: 1px solid rgb(224, 224, 224);
+        margin: 10px 20px;
+        border-radius: 3px;
+        display: flex;
+        .chatUicon {
+            padding: 3px;
+            margin-left: 7px;
+        }
+        .userwrapper {
+            margin-left: 6px;
+            #word {
+                font-size: 12px;
+                color: #8a8888
+            }
+        }
+    }
+}
+
+.eachuser:hover {
+    background-color: rgb(248, 248, 248);
+}

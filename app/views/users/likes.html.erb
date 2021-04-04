@@ -1,5 +1,5 @@
 <div class="contents">
-<% if !@likes  %>
+<% if @likes  %>
 <% @likes.each do |like|  %>
 <% if like.image_id  %>
 <%  @image = Image.find(like.image_id) %>

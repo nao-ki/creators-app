@@ -1,0 +1,45 @@
+<div class="chatContent">
+    <div class="toChatUser-content">
+    <div class="chatuser-wrap">
+      <div id="iconwrap">
+        <% if @cuicon %>
+        <%= image_tag @cuicon.icon, :size => '50', class: 'usericon' %>
+      <% else %>
+      <%= image_tag 'user.png', :size => '50', class: 'usericon'  %>
+      <% end %>
+      </div>
+      <div class="userChatWrap">
+       <div id="nickname">
+      <%= @chatuser.nickname %>
+       </div>
+       <div id="word">ssasa
+     <%= @chatuser.word %>
+       </div>
+      </div>
+    </div>
+  </div>
+  <div class="chats-wrapper">
+  <div class="chats-inside" id="chatsIn" >
+ <div id="direct_messages" data-room_id="<%= @room.id %>">
+  <%= render @direct_messages %>
+</div>
+  </div>
+  <div class="chatForm">
+    <div class="form-message">
+      <form>
+        <input type="text" id="chat-input" data-behavior="room_speaker" placeholder="内容を入力..." >
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener("turbolinks:load", () => {
+    function scrollToEnd() {
+        const messageDetails = document.getElementById('chatsIn');
+        messageDetails.scrollTop = messageDetails.scrollHeight;
+    }
+    scrollToEnd()
+})
+</script>
+

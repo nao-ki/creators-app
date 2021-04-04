@@ -13,7 +13,7 @@ class SentencesController < ApplicationController
   def create
     @sentence = Sentence.new(sentence_params)
     if @sentence.user_id = current_user.id
-    @sentence.save
+     @sentence.save!
     redirect_to action: :index
     end
   end
@@ -50,13 +50,8 @@ class SentencesController < ApplicationController
 
     private
     def sentence_params
-      params.require(:sentence).permit(:title, :content, :summary, :tag_ids)
+      params.require(:sentence).permit(:title, :summary, :content, :tag_ids)
     end
-
-    # private
-    # def image_params
-    #   params.require(:image).permit(:title, :content, :image, :tag_ids)
-    # end
 
     def move_to_index
       redirect_to action: :index unless user_signed_in?

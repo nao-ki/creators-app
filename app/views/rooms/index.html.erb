@@ -1,0 +1,35 @@
+
+
+<div class="chatContent">
+<% if @entry.present? %>
+<div id="memberT"> ChatMembers </div>
+<div class="chat-list-wrapper">
+<% @entry.each do |e| %>
+ <% room = Entry.where(room_id: e.room_id) %>
+  <% room.each do |r| %>
+      <% chatuser = User.find(r.user_id) %>
+      <% unless chatuser.nickname == current_user.nickname %>
+
+    <%= link_to room_path(e.room_id) do %>
+       <div class="eachuser">
+       <div class="chatUicon">
+        <% if @icon %>
+        <%= image_tag @icon.icon, :size => '40', class: 'usericon' %>
+      <% else %>
+      <%= image_tag 'user.png', :size => '40', class: 'usericon'  %>
+      <% end %>
+       </div>
+       <div class="userwrapper">
+      <%= chatuser.nickname %>
+      <div id="word"><%= chatuser.word %></div>
+      </div>
+      </div>
+      <% end %>
+      <% end %>
+  <% end %>
+<% end %>
+</div>
+<% else %>
+まだチャットメンバーはいません。
+<% end %>
+</div>

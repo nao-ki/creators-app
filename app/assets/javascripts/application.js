@@ -9,21 +9,14 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-
+//= require rails-ujs
 //= require activestorage
+//= require turbolinks
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
 
-$(function() {
-    $('.dropdown li.hover').hover(function() {
-        $(this).children('ul').show();
-    }, function() {
-        $(this).children('ul').hide();
-    });
-});
-
-$(function() {
+document.addEventListener("turbolinks:load", function() {
     $('#openModal').click(function() {
         $('#modalArea').fadeIn();
     });
@@ -32,15 +25,8 @@ $(function() {
     });
 });
 
-$(function() {
-    $('#slider').slick({
-        dots: true, //スライドの下にドットのナビゲーションを表示
-        autoplay: true, //自動再生
-        autoplaySpeed: 4000, //再生スピード
-    });
-});
 
-$(document).ready(function() {
+document.addEventListener("turbolinks:load", function() {
     $("#open").on("click", function(e) {
         e.preventDefault();
         $("#overlay, #modal").addClass("active");

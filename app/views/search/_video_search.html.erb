@@ -10,12 +10,14 @@
     <% if icon %>
     <%= image_tag icon.icon, :size => '30', class: 'usericon' %>
     <% else %>
-    <%= image_tag 'users.png', :size => '30', class: 'usericon'  %>
+    <%= image_tag 'user.png', :size => '30', class: 'usericon'  %>
     <% end %>
 </div>
 <div class="taged-user-box">
 <div id="taged-name">
+<%= link_to user_path(video.user.id) do %>
  <%= user.nickname %>
+ <% end %>
  </div>
  <div id="taged-word">
   <%= user.word %>

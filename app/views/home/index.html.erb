@@ -1,34 +1,63 @@
+<div class="home-wrapper">
+ <div class="genre-title">
+ <li>Image </li>
+ <li>Sound </li>
+ <li>Movie </li>
+ <li>Text </li>
+ </div>
 
-   <div class="home-wrapper">
+  <div class="randomImages">
+    <% @homeimage.each do |image| %>
+        <div class="eachimage">
+        <%= link_to  image_path(image.id) do %>
+          <%= image_tag image.image %>
+        <% end %>
+        </div>
+    <% end %>
+
+      </div>
+  <div class="popular" id="image">
+    <div class="eachbox">
+      <%# <%= image_tag  %>
+      dffs
+    </div>
   </div>
+</div>
+
+  <!--
 <div class="slideshow">
   <div id="slider">
   <% if @images %>
     <% @images.each do |image| %>
-
     <%= link_to image_path(image.id) do %>
-
       <%= image_tag image.image, :size => '560' if image.image.attached? %>
     <% end %>
     <% end %>
   </div>
 </div>
-<div class="genre-title"> Image </div>
+-->
+
+
 <% if @notice %>
                 <%= @notice %>
                 <% end %>
-
+                <div style="margin-top: 100px; margin-left: 40px;">
+                <% @posts.each do |post| %>
+                <%= post.id %>
+                <% if post.image.attached? %>
+                <%= image_tag post.image, :size => '40' %>
+                <% end %>
+                <% end %>
+                </div>
+<!--
 <div class="genre-container">
-<% @userimage.each do |image| %>
-
+<% @homeimage.each do |image| %>
 <% @id = image.user_id %>
  <% @icon = Icon.find_by(user_id: @id) %>
  <div class="box1">
  <div class="genre-works-wrapper">
  <% if image.image.attached? %>
-
  <%= image_tag image.image,  :size => '300', class: 'image' %>
-
  <% end %>
  <div class="icon-wrapper">
 
@@ -70,3 +99,4 @@
 </div>
 
 <% end %>
+-->

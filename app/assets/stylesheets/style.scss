@@ -14,10 +14,6 @@ body {
     padding-top: 100px;
 }
 
-body {}
-
-.sign_in-image {}
-
 .form-main-wrapper {
     width: 55%;
     height: 570px;
@@ -64,14 +60,6 @@ body {}
     border-radius: 3px;
     border: none;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
-}
-
-textarea[type="text"] {
-    // resize: none;
-    // height: 120px;
-    // width: 100%;
-    // border: none;
-    // box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
 }
 
 .app-name {
@@ -1725,8 +1713,9 @@ textarea {
 
 .followed-btn {
     padding: 2px 3px;
+    border: none;
     border: solid 0.5px rgb(121, 121, 121);
-    background-color: #ececec;
+    background-color: #ffffff;
     border-radius: 2px;
 }
 
@@ -1800,6 +1789,10 @@ video {
     width: 600px;
     height: 600px;
     background-image: url("assets/images/sound-only.jpg");
+}
+
+#works img {
+    object-fit: contain;
 }
 
 .sentence_content {

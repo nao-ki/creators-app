@@ -8,7 +8,6 @@ class ImagesController < ApplicationController
     @images = Image.order("created_at DESC")
   end
 
-
   def create
     @image = Image.new(image_params)
     @image.user_id = current_user.id

@@ -3,7 +3,7 @@
  <% if @icon %>
   <%= image_tag @icon.icon, :size => '30', class: 'usericon', id: 'userinfo' %>
  <% else %>
- <%= image_tag 'users.png', :size => '30', class: 'usericon', id: 'userinfo' %>
+ <%= image_tag 'user.png', :size => '30', class: 'usericon', id: 'userinfo' %>
  <% end %>
 
  <div class="name-words">
@@ -18,15 +18,12 @@
   </div>
    <% end %>
 
-
-<!--
-
--->
  <div class="info-wrapper">
  <div class="post-followers-wrapper">
 
  <li>投稿数
  <% total = Image.includes([:user, :videos]).where(user_id: userid) %>
+
   <div class="num"><%= total.count %></div>
  </li>
  <li>フォロー
