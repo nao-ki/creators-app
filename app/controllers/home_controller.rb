@@ -3,13 +3,9 @@ class HomeController < ApplicationController
   before_action :move_to_index
 
   def index
-    # @images = Image.order("RANDOM()").limit(6)
-
-    # @images = Image.order("RAND()").limit(6)
 
     @image = Like.group(:image_id)
-    @homeimage = Image.all.includes(:user).order("RAND()").limit(6)
-    # @homeimage = Image.all.includes(:user).order("RANDOM()").limit(6)
+
     @comment = Comment.new
 
     @like = Like.new
