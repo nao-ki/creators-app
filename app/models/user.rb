@@ -4,14 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-has_many :sentences,  dependent: :destroy
 has_many :comments
 
 has_many :entries
 has_many :direct_messages
 has_many :rooms, through: :entries
 
-validates :nickname, presence: :true
+# validates :nickname, presence: :true
 
 has_one :icon
 #ユーザアイコン
@@ -33,6 +32,10 @@ has_many_attached :videos, dependent: :destroy
 has_one_attached :image, dependent: :destroy
 has_many_attached :images, dependent: :destroy
 #画像関連
+
+#テキスト関連
+has_many :sentences,  dependent: :destroy
+#テキスト関連
 
 # いいね関連
 has_many :likes, dependent: :destroy

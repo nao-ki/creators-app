@@ -20,8 +20,9 @@
   </div>
   </div>
   </div>
+  <%= link_to  image_path(work.id) do %>
   <div id="works">
-   <%# <%=  link_to @image.image, 'data-lightbox': @image.image do %>
+
     <%= image_tag work.image, :size =>'600' %>
   <%# <% end %>
    </div>
@@ -37,9 +38,8 @@
   </div>
   <div id="content">
   <%= work.content %>
-
   </div>
-
   </div>
 </div>
+ <% end %>
 </div>

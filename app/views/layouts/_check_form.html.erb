@@ -1,0 +1,12 @@
+<div class="ED-wrapper">
+ <%= link_to  edit_sentence_path(sentence.id) do %>
+ <div class="edit">
+ 編集する
+ </div>
+ <% end %>
+<%= link_to  sentence_path(sentence.id), method: :delete do %>
+ <div class="delete">
+ 削除する
+ </div>
+ <% end %>
+</div>

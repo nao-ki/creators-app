@@ -17,4 +17,14 @@ class Sentence < ApplicationRecord
     end
   end
 
+  before_update do
+    sentence = Sentence.find_by(id: self.id)
+    sentence.tags.clear
+    tags = self.summary.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    tags.uniq.map do |t|
+      tag = Tag.find_or_create_by(name: t.downcase.delete('#'))
+      sentence.tags << tag
+    end
+  end
+
 end

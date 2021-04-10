@@ -21,6 +21,7 @@
   </div>
 </div>
 </div>
+<%= link_to sound_path(sound.id) do %>
 <div class="works taged-sound-wrapper">
    <% if sound.sound.attached? %>
  <audio src="<%= rails_blob_path(sound.sound) %>" controlslist="nodownload type=" type="video/mp4" controls></audio>
@@ -35,4 +36,5 @@
   </div>
 </div>
   <% end %>
+   <% end %>
 </div>

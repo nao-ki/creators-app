@@ -7,6 +7,19 @@ class SoundsController < ApplicationController
     @sounds = Sound.includes(:user).order("created_at DESC")
   end
 
+  def edit
+    @sound = Sound.find(params[:id])
+  end
+
+  def update
+    @sound = Sound.find(params[:id])
+    if current_user.id == @sound.user_id
+      @sound.update(sound_params)
+      # flash[:notice] = "投稿完了"
+    redirect_to user_sounds_path(current_user.id)
+    end
+  end
+
 
   def create
     @sound = Sound.new(sound_params)

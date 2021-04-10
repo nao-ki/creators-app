@@ -1,9 +1,9 @@
-
-
- <%= link_to sound_path(sound.id) do %>
+<%= link_to sound_path(sound.id) do %>
+<div>
   <audio src="<%= rails_blob_path(sound.sound) %>" controlslist="nodownload type=" type="video/mp4" controls></audio>
 
   <div id="title-work">
     <%= sound.title %>
   </div>
+</div>
   <% end %>

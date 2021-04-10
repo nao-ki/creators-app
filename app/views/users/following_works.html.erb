@@ -1,25 +1,24 @@
 <div class="contents">
-<% if @works %>
+<% if @works.present? %>
 <% @works.each do |work| %>
+  <% @name = work.model_name %>
+  <% if @name == "Image" %>
+    <%= render partial: 'relationships/follow_images', locals: { work: work } %>
 
-<% @name = work.model_name %>
-<% if @name == "Image" %>
-<%= render partial: 'relationships/follow_images', locals: { work: work } %>
+    <% elsif @name == "Video" %>
+     <%= render partial: 'relationships/follow_videos', locals: { work: work } %>
 
-<% elsif @name == "Video" %>
-<%= render partial: 'relationships/follow_videos', locals: { work: work } %>
+    <% elsif @name == "Sentence" %>
+     <%= render partial: 'relationships/follow_sentences', locals: { work: work } %>
 
- <% elsif @name == "Sentence" %>
-<%= render partial: 'relationships/follow_sentences', locals: { work: work } %>
+    <% else @name == "Sound" %>
+    <%= render partial: 'relationships/follow_sounds', locals: { work: work } %>
+    <% end  %>
+  <% end %>
 
- <% else @name == "Sound" %>
- <%= render partial: 'relationships/follow_sounds', locals: { work: work } %>
-<% end  %>
-<% end %>
-
-<% else %>
+<% else   %>
 <div class="notyet">
-フォローした作品はまだありません。
+フォローしているユーザまたは、フォローしているユーザの作品はまだありません。
 </div>
 <% end %>
 

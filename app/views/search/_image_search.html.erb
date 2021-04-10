@@ -22,11 +22,13 @@
   </div>
 </div>
 </div>
+
+<%= link_to image_path(iworks.id) do %>
+
 <div class="works">
    <% if iworks.image.attached? %>
-    <%=  link_to iworks.image, 'data-lightbox': image.image do %>
       <%= image_tag iworks.image, :size =>'300' %>
-      <% end %>
+
   <% end %>
 </div>
 <div class="taged-works-intro">
@@ -38,5 +40,5 @@
  </div>
 </div>
   <% end %>
-
+ <% end %>
 </div>

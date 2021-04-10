@@ -1,7 +1,9 @@
 <% if @sentences %>
 
 <%= form_with(model: [sentence, comment], url: sentence_comments_path(sentence) ) do |f| %>
-    <%= f.text_area :text,  placefolder: 'comment' %>
+<div class="comment-wrap">
+    <%= f.text_area :text, placeholder: 'コメント入力...' %>
+</div>
      <div class="comment-do">
     <%= f.submit "コメントする", class: "comment-submit" %>
     </div>
@@ -9,7 +11,9 @@
 <% elsif @sound %>
 
 <%= form_with(model: [sound, comment], url: sound_comments_path(sound) ) do |f| %>
-    <%= f.text_area :text, placefolder: 'comment' %>
+<div class="comment-wrap">
+    <%= f.text_area :text, placeholder: 'コメント入力...' %>
+</div>
      <div class="comment-do">
     <%= f.submit "コメントする" %>
     </div>
@@ -18,7 +22,7 @@
 
 <%= form_with(model: [image, comment], url: image_comments_path(image) ) do |f| %>
 <div class="comment-wrap">
-    <%= f.text_area :text, placefolder: 'comment' %>
+    <%= f.text_area :text, placeholder: 'コメント入力...' %>
 </div>
 <div class="comment-do">
     <%= f.submit "コメントする" %>
@@ -27,7 +31,9 @@
 <% else @video %>
 
 <%= form_with(model: [video, comment], url: video_comments_path(video) ) do |f| %>
-    <%= f.text_area :text, placefolder: 'comment' %>
+<div class="comment-wrap">
+    <%= f.text_area :text, placeholder: 'コメント入力...' %>
+</div>
     <div class="comment-do">
     <%= f.submit "コメントする" %>
     </div>

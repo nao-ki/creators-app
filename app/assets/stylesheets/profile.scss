@@ -172,6 +172,32 @@ table td {
 
 .profile-name {
     font-size: 24px;
+    display: flex;
+    margin-left: 20px;
+}
+
+#fcount {
+    font-size: 14px;
+}
+
+.followWrap {
+    font-size: 13px;
+    margin: 4px 0;
+}
+
+.one-word {
+    overflow-wrap: break-word;
+    margin-top: 10px;
+}
+
+.message-wrapper {
+    border: 1px solid rgb(194, 194, 194);
+    font-size: 14px;
+    padding: 2px 4px;
+    margin-top: 7px;
+    margin-left: 30px;
+    border-radius: 3px;
+    height: 18px;
 }
 
 .profile-name .name-mr {
@@ -205,7 +231,7 @@ table td {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     text-align: center;
-    color: #fff;
+    color: black;
 }
 
 .userWorks-content {
@@ -232,7 +258,7 @@ table td {
     margin-top: 20px;
     display: inline-flex;
     flex-wrap: wrap;
-    margin-left: 18px;
+    justify-content: space-evenly;
 }
 
 .eachSentencesBox {
@@ -243,10 +269,7 @@ table td {
     margin-bottom: 18px;
     margin-left: 2px;
     padding: 7px;
-    background-color: red;
     position: relative;
-    // writing-mode: vertical-rl;
-    // text-orientation: upright;
     padding-bottom: 10px;
 }
 
@@ -270,6 +293,7 @@ table td {
         padding: 0 10px 9px 10px;
         font-style: oblique;
         font-size: 16px;
+        overflow-wrap: break-word;
     }
 }
 
@@ -290,7 +314,9 @@ table td {
         bottom: 0;
         padding: 0 10px 9px 10px;
         font-style: oblique;
-        font-size: 16px;
+        font-size: 14px;
+        width: 90%;
+        overflow-wrap: break-word;
     }
     video {
         margin-top: 60px;
@@ -304,8 +330,13 @@ table td {
 
 .sentence-contents {
     height: 80%;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
+    // writing-mode: vertical-rl;
+    // text-orientation: upright;
+    content: "\A";
+    overflow-wrap: break-word;
+    overflow-y: scroll;
+    font-size: 14px;
+    padding: 3px;
 }
 
 .worksGenre {

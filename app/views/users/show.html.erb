@@ -1,17 +1,5 @@
 
 <h2 class="profile-title">Profile</h2>
-<% unless @user.id == current_user.id %>
-  <% if @isRoom == true %>
-    <%= link_to "チャットへGo!", room_path(@roomId) %>
-  <% else %>
-    <%= form_for @room do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, :value=> @user.id %>
-      <% end %>
-      <%= f.submit "チャットを始める" %>
-    <% end %>
-  <% end %>
-<% end %>
 
 <div class="profile-wrapper">
   <div class="left">
@@ -20,6 +8,15 @@
  <% else  %>
  <%= image_tag 'user.png', :size => '80' %>
  <% end %>
+ <div class="followWrap">
+    <%= link_to followers_user_path(@user.id) do %>
+        フォロワー<%= @user.followers.count %>人
+    <% end %>
+    <%= link_to following_user_path(@user.id) do %>
+          フォロー<%= @user.following.count %>人
+    <% end %>
+ </div>
+
     <div class="artist-genre">
       <%= @user.genre %>
     </div>
@@ -30,14 +27,34 @@
     <div>
     <div class="count">
     </div>
+
       <%= render "follow_form" %>
+
     </div>
 
   </div>
-  <!-- left end -->
+
   <div class="right">
-    <div class="profile-info">
-      <div class="profile-name"><%= @user.nickname %></div>
+    <div class="profile-info" id="profileWrap">
+      <div class="profile-name"><%= @user.nickname %>
+
+      <% unless @user.id == current_user.id %>
+      <div class="message-wrapper">
+
+  <% if @isRoom == true %>
+    <%= link_to "メッセージを送信", room_path(@roomId) %>
+  <% else %>
+    <%= form_for @room do |f| %>
+      <%= fields_for @entry do |e| %>
+        <%= e.hidden_field :user_id, :value=> @user.id %>
+      <% end %>
+      <%= f.submit "メッセージを送信" %>
+    <% end %>
+  <% end %>
+</div>
+<% end %>
+
+      </div>
       <div class="profile-info-list">
 
       </div>
@@ -55,7 +72,6 @@
     <% end %>
     <% end %>
   </div>
-
 </div>
 
 <h2 class="works-title">Works</h2>
@@ -65,7 +81,7 @@
       <li>
 
       <%= link_to  user_path(current_user.id) do %>
-      ホーム  (<%= @allworks.count %>)
+      ホーム
       <% end %>
       </li>
         <li>
@@ -91,7 +107,7 @@
     </ul>
   </div>
   <div class="userWorksWrapper">
-<% if !@allwork %>
+<% if @allwork.present? %>
   <% @allworks.each do |work| %>
    <div class="eachWorksBox">
    <% @name = work.model_name %>
@@ -102,9 +118,7 @@
     <% elsif @name == "Sentence" %>
    <%= render partial: 'users/sentences_works', locals: { sentence: work} %>
     <% else @name == "Sound" %>
-
     <%= render partial: 'users/sounds_works', locals: { sound: work} %>
-
     <% end %>
    </div>
    <% end %>

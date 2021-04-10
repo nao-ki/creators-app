@@ -8,6 +8,18 @@ def index
   @videos = Video.includes(:user).order("created_at DESC")
 end
 
+def edit
+  @video = Video.find(params[:id])
+end
+
+def update
+  @video = Video.find(params[:id])
+  if current_user.id == @video.user_id
+    @video.update(video_params)
+  redirect_to user_videos_path(current_user.id)
+  end
+end
+
 def create
 @video = Video.new(video_params)
 @video.user_id = current_user.id

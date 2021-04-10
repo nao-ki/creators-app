@@ -22,6 +22,7 @@
   </div>
   </div>
   </div>
+  <%= link_to video_path(video.id) do %>
   <div id="works">
  <video src="<%= rails_blob_path(video.video)%>" width="600px", height="600px" type="video/mp4" controlslist="nodownload type=" controls></video>
    </div>
@@ -34,12 +35,10 @@
   <%= video.title %>
   </div>
   <div id="content">
-  <%= video.introduction %>
-  fsdfnjsdnfjksdnbfjkbsdnkjfbsdhlbfhjbhjsdbfjhdshlfb
-  sfsdnbfsdbjfbdksbfjdsfsdfnjsdnfjksdnbfjkbsdnkjfbsdhlbfhjbhjsdbfjhdshlfb
-  sfsdnbfsdbjfbdksbfjds
+  <%= video.content %>
   </div>
 
   </div>
+<% end %>
 </div>
 </div>

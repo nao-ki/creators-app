@@ -7,22 +7,22 @@
   <%= form_with model: @image, local: true  do |i| %>
 
   <div class="title-form">
-
-  :タイトルを入力してください
   </div>
-    <%= i.text_field :title %>
+    <%= i.text_field :title, placeholder: "タイトル" %>
   <div class="content-wrapper">
-  :内容を入力してください。
-  </div>
-    <%= i.text_area :content, class: 'content-form' %>
-    <label class="file-up">
 
+  </div>
+    <%= i.text_area :content, class: 'content-form', placeholder: "内容" %>
+    <% if @error %>
+    <div class="errors-show">
+    <%= @error %>
+    </div>
+        <% end %>
+    <label class="file-up">
     ファイルを選択
     <%= i.file_field :image, id: "pac-input" %><br>
     </label>
-    <% if @error %>
-<%= @error %>
-<% end %>
+
     <%= i.submit "投稿する", class: 'send-button' %>
   <% end %>
 

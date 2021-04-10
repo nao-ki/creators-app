@@ -1,102 +1,89 @@
 <div class="home-wrapper">
+
+
+
  <div class="genre-title">
+ <%= link_to  images_path do %>
  <li>Image </li>
+ <% end %>
+  <%= link_to  sounds_path do %>
  <li>Sound </li>
+ <% end %>
+  <%= link_to  videos_path do %>
  <li>Movie </li>
+ <% end %>
+  <%= link_to  sentences_path do %>
  <li>Text </li>
+ <% end %>
  </div>
 
-  <div class="randomImages">
-    <% @homeimage.each do |image| %>
-        <div class="eachimage">
-        <%= link_to  image_path(image.id) do %>
-          <%= image_tag image.image %>
-        <% end %>
-        </div>
+ <div class="popularWrap">
+  <div id="pTitle">
+  人気作品
+  </div>
+ <div class="pImageWrap" id="pWrap" >
+     <% @likedImages.each do |image| %>
+    <div class="pImages">
+    <%= link_to image_path(image.id) do %>
+    <%= image_tag image.image, :size => '50' %>
     <% end %>
-
+    </div>
+    <% end %>
+ </div>
+    <div class="pSounds">
+    <div class="pSoundsWrap">
+    <% @likedSounds.each do |sound| %>
+    <%= link_to  sound_path(sound.id) do %>
+      <div class="eachPsound">
+    <audio src="<%= rails_blob_path(sound.sound)%>" type="audio/mp3" controls></audio>
+    <div id="title">
+      <%= sound.title %>
+    </div>
       </div>
-  <div class="popular" id="image">
-    <div class="eachbox">
-      <%# <%= image_tag  %>
-      dffs
+      <% end %>
+    <% end %>
     </div>
   </div>
-</div>
 
-  <!--
-<div class="slideshow">
-  <div id="slider">
-  <% if @images %>
-    <% @images.each do |image| %>
-    <%= link_to image_path(image.id) do %>
-      <%= image_tag image.image, :size => '560' if image.image.attached? %>
-    <% end %>
-    <% end %>
+  <div class="pVideos">
+   <% @likedVideos.each do |video| %>
+    <%= link_to  video_path(video.id) do %>
+   <div class="pWrap">
+    <div class="pVideoWrap">
+     <% if video.video.attached? %>
+    <video src="<%= rails_blob_path(video.video) %>" controlslist="nodownload type=" type="video/mp4" controls></video>
+    <div>
+    <div id="title">
+     <%= video.title %>
+     </div>
   </div>
-</div>
--->
-
-
-<% if @notice %>
-                <%= @notice %>
-                <% end %>
-                <div style="margin-top: 100px; margin-left: 40px;">
-                <% @posts.each do |post| %>
-                <%= post.id %>
-                <% if post.image.attached? %>
-                <%= image_tag post.image, :size => '40' %>
-                <% end %>
-                <% end %>
-                </div>
-<!--
-<div class="genre-container">
-<% @homeimage.each do |image| %>
-<% @id = image.user_id %>
- <% @icon = Icon.find_by(user_id: @id) %>
- <div class="box1">
- <div class="genre-works-wrapper">
- <% if image.image.attached? %>
- <%= image_tag image.image,  :size => '300', class: 'image' %>
- <% end %>
- <div class="icon-wrapper">
-
- <% if @icon %>
-  <%= image_tag @icon.icon, :size => '30', class: 'usericon' %>
- <% else %>
- <%= image_tag 'users.png', :size => '30', class: 'usericon'  %>
- <% end %>
- <div class="nickname">
- <%= link_to user_path(image.user.id) do %>
- <%= image.user.nickname %>
    <% end %>
- </div>
-
-   <div class="icon-content">
-   <%= render 'users/userinfo', {image: image, userid: @id} %>
+    <% end %>
+    </div>
    </div>
+
+   <% end %>
+  </div>
+
+<div class="pSentences">
+<%  @likedSentences.each do |sentence| %>
+<%= link_to  sentence_path(sentence.id) do %>
+  <div class="pSwrap">
+  <div class="left">
+<%= sentence.content %>
+  </div>
+  <div class="right">
+  <div id="title">
+  <%= sentence.title %>
+</div>
+<%= sentence.summary %>
+  </div>
+  </div>
+  <% end %>
+  <% end %>
 </div>
 
+ </div>
 
-<div class="like-comment-wrapper">
-<div id="like-<%= image.id %>">
-<%= render 'likes/image_like', { image: image} %>
-</div>
-<%= link_to image_path(image.id) do %>
-<%= image_tag 'comment.svg', :size => '26' %>
-<% end %>
-</div>
- </div>
- <div class="gc-wrapper">
- <div class="title">title: <%= image.title %></div>
- <div class="content">content: <%= image.content %></div>
- </div>
- </div>
- <% end %>
- <div class="to-works">
-  <%= link_to "Image作品一覧", images_path %>
- </div>
 </div>
 
-<% end %>
--->

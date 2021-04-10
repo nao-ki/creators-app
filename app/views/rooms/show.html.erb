@@ -10,9 +10,11 @@
       </div>
       <div class="userChatWrap">
        <div id="nickname">
+       <%= link_to  user_path(@chatuser.id) do %>
       <%= @chatuser.nickname %>
+      <% end %>
        </div>
-       <div id="word">ssasa
+       <div id="word">
      <%= @chatuser.word %>
        </div>
       </div>

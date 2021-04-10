@@ -15,21 +15,23 @@
   <%= form_with model: @video, local: true  do |i| %>
 
   <div class="title-form">
-  :タイトルを入力してください
+
   </div>
-    <%= i.text_field :title %>
+    <%= i.text_field :title, placeholder: "タイトル" %>
   <div class="content-wrapper">
-  :内容を入力してください。
+
   </div>
-    <%= i.text_area :content, class: 'content-form' %>
+    <%= i.text_area :content, class: 'content-form', placeholder: "内容" %>
+    <% if @errors %>
+    <div class="errors-show">
+    <%= @errors %>
+    </div>
+    <% end %>
     <label class="file-up">
     ファイルを選択
     <%= i.file_field :video, id: "uploadVideoFile", accept: "video/*" %><br>
 
     </label>
-    <% if @errors %>
-    <%= @errors %>
-    <% end %>
     <%= i.submit "投稿する", class: 'send-button' %>
   <% end %>
   </div>
@@ -128,5 +130,4 @@ function PostChunk(){
             }
         });
 }
-
 </script>

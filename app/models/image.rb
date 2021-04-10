@@ -32,14 +32,11 @@ class Image < ApplicationRecord
   before_update do
     image = Image.find_by(id: self.id)
     image.tags.clear
-    tags = self.caption.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
-    tags.uniq.map do |hashtag|
-      tag = Tag.find_or_create_by(name: hashtag.downcase.delete('#'))
-      image.hashtags << tag
+    tags = self.content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    tags.uniq.map do |t|
+      tag = Tag.find_or_create_by(name: t.downcase.delete('#'))
+      image.tags << tag
     end
   end
-
-
-
 
 end

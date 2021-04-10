@@ -4,10 +4,10 @@
 <h2 class="profile-title"><%= current_user.nickname %></h2>
 <div class="edit-content">
 <div class="img_block">
-        <% if @usericon%>
-          <%= link_to edit_icon_path(current_user.id) do %>
+    <% if @usericon%>
+        <%= link_to edit_icon_path(current_user.id) do %>
         <%= image_tag @usericon.icon, :size => '160', :id => 'editicon' %>
-            <% end %>
+          <% end %>
         <% else  %>
      <%= link_to new_icon_path do %>
         <%= image_tag 'user.png', :size => '160', :id => 'editicon' %>

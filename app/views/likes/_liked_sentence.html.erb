@@ -23,15 +23,17 @@
   </div>
   </div>
   </div>
+  <%= link_to sentence_path(sentence.id) do %>
   <div id="works" >
 
 <div class="sentence_content">
 <div id="sentences">
-  <%= sentence.content %>adjanfla
+  <%= sentence.content %>
 
   </div>
   </div>
    </div>
+   <% end %>
    <div class="l-tcwrapper">
     <div id="like-<%= sentence.id %>">
     <%= render 'likes/sentence_like', { sentence: sentence} %>

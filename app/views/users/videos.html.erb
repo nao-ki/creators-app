@@ -78,7 +78,9 @@
   <% if @videos.present?  %>
   <% @videos.each do |video| %>
    <div class="eachVideosBox" >
+   <%= link_to  video_path(video.id) do %>
     <%= render partial: 'users/videos_works', locals: { video: video} %>
+    <% end %>
   </div>
   <% end %>
   <% else  %>

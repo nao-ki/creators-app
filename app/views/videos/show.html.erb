@@ -8,6 +8,35 @@
 </div>
 
 <div class="work-info-wrapper">
+
+<% if current_user.id == @video.user_id %>
+  <div class="EditDeleteWrap">
+      <!-- Trigger/Open The Modal -->
+    <div id="myBtn"></div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modalWindow">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="ED-wrapper">
+      <%= link_to  edit_video_path(@video.id) do %>
+      <div class="edit">
+      編集する
+      </div>
+      <% end %>
+      <%= link_to  video_path(@video.id), method: :delete do %>
+      <div class="delete">
+      削除する
+      </div>
+      <% end %>
+      </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <div class="name-word-wrapper">
 <div class="icon-wrap">
   <% @icon = Icon.find_by(user_id: @video.user_id) %>
@@ -37,14 +66,14 @@
 <div class="commentwritten-wrapper">
     <div class="title-content-wrapper">
 <div id="title">
-title
+  <%= @video.title %>
     <div class="post-date">
     <%= @video.created_at.strftime("%Y/%m/%d") %>
     </div>
 </div>
 
 <div id="content">
-content:
+  <%= @video.content %>
 
 </div>
  <div class="work-comment-wrapper">
@@ -71,3 +100,33 @@ content:
 <% end %>
 </div>
 </div>
+
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+

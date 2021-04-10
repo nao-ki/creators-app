@@ -20,8 +20,9 @@
   </div>
   </div>
   </div>
+  <%= link_to sound_path(sound.id) do %>
   <div class="sound" id="works" >
-  <%# <%= image_tag 'sound-only.jpg' %>
+
   <audio src="<%= rails_blob_path(sound.sound)%>"  type="audio/mp3" controls></audio>
    </div>
    <div class="l-tcwrapper">
@@ -34,11 +35,11 @@
   </div>
   <div id="content">
   <%= sound.content %>
-  fsdfnjsdnfjksdnbfjkbsdnkjfbsdhlbfhjbhjsdbfjhdshlfb
-  sfsdnbfsdbjfbdksbfjdsfsdfnjsdnfjksdnbfjkbsdnkjfbsdhlbfhjbhjsdbfjhdshlfb
-  sfsdnbfsdbjfbdksbfjds
   </div>
 
   </div>
+  <% end %>
+
 </div>
+
 </div>

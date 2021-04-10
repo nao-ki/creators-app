@@ -26,8 +26,9 @@ class ImagesController < ApplicationController
     image = Image.find(params[:id])
     if image.user_id == current_user.id
       image.destroy
+      redirect_to user_images_path(current_user.id)
     end
-    redirect_to action: :index
+
   end
 
 
@@ -47,8 +48,10 @@ class ImagesController < ApplicationController
 
   def update
     @image = Image.find(params[:id])
-    @image.update params.require(:image).permit(:title, :content, :image)
-    redirect_to @image
+    if @image.update params.require(:image).permit(:title, :content, :image)
+    redirect_to user_images_path(current_user.id)
+    end
+
   end
 
   private

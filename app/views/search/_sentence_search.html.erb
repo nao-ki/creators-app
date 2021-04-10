@@ -20,7 +20,8 @@
   </div>
 </div>
 </div>
-<div class="works">
+<%= link_to  sentence_path(iworks.id) do %>
+<div class="works" id="sentence">
  <%= iworks.content %>
 </div>
 <div class="taged-works-intro">
@@ -32,5 +33,5 @@
  </div>
 </div>
   <% end %>
-
+<% end %>
 </div>

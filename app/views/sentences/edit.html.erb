@@ -1,22 +1,24 @@
-<div class="text-content-wrapper">
-    <%= form_tag("/sentences/#{@sentences.id}", method: :patch) do %>
-        <h3>投稿する</h3>
-        <div class="text-content-form">
-            <input class="text-title" placeholder="タイトル" type="text" name="title" value="<%= @sentences.title %>" />
-            <textarea cols="30" name="content" type="text" class="text-form" placeholder="本文" rows="10">
-<%= @sentences.content %></textarea
-    >
-    <textarea
-      cols="30"
-      name="summary"
-      type="text"
-      class="summary-form"
-      placeholder="あらすじ"
-      rows="10"
-    >
-<%= @sentences.summary %></textarea
-    >
-    <input type="submit" value="編集完了" />
+  <%= form_with model: @sentences, local: true do |s| %>
+<div class="posts-wrapper-content">
+ <div class="preview" id="image">
+
+  <div class="sentence-content">
+    <%= s.text_area :content, placeholder: "本文", :value => @sentences.content %>
+
   </div>
+  </div>
+  <div class="information-content">
+  <div class="info-cover">
+  <div class="title-form">
+  <%# :タイトルを入力してください %>
+  </div>
+  <%= s.text_field :title , placeholder: "タイトル", :value => @sentences.title %>
+    <div class="content-wrapper">
+    <%# :内容を入力してください。 %>
+    </div>
+  <%= s.text_area :summary, placeholder: "内容", class: 'content-form', :value => @sentences.summary %>
+  <%= s.submit "投稿する", class: 'send-button' %>
   <% end %>
+  </div>
+  </div>
 </div>

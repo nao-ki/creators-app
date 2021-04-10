@@ -20,8 +20,11 @@
   </div>
   </div>
   </div>
+
   <div id="works">
+    <%= link_to  image_path(image.id) do %>
   <%= image_tag image.image, :size =>'600' %>
+  <% end %>
    </div>
    <div class="l-tcwrapper">
     <div id="like-<%= image.id %>">
@@ -29,9 +32,9 @@
     </div>
     <%= link_to image_path(image.id) do %>
     <%= image_tag 'comment.svg', :size => '26' %>
-    <%# <div id="counts"> %>
+
     <%= image.comments.count %>
-    <%# </div> %>
+
     <% end %>
    </div>
   <div id="title">

@@ -24,6 +24,7 @@
   </div>
 </div>
 </div>
+<%= link_to  video_path(video.id) do %>
 <div class="works taged-video-wrapper">
    <% if video.video.attached? %>
  <video src="<%= rails_blob_path(video.video) %>" controlslist="nodownload type=" type="video/mp4" controls muted autoplay playinline loop></video>
@@ -39,5 +40,5 @@
 </div>
 
   <% end %>
-
+<% end %>
 </div>

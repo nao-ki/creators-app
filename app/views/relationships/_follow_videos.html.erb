@@ -20,6 +20,7 @@
   </div>
   </div>
   </div>
+  <%= link_to  video_path(work.id) do %>
   <div id="works">
  <video src="<%= rails_blob_path(work.video)%>" width="600px", height="600px" type="video/mp4" controlslist="nodownload type=" controls></video>
    </div>
@@ -39,3 +40,4 @@
   </div>
 </div>
 </div>
+  <% end %>
