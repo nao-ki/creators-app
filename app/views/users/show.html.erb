@@ -38,23 +38,23 @@
     <div class="profile-info" id="profileWrap">
       <div class="profile-name"><%= @user.nickname %>
 
+<!---Chat-->
       <% unless @user.id == current_user.id %>
       <div class="message-wrapper">
-
-  <% if @isRoom == true %>
-    <%= link_to "メッセージを送信", room_path(@roomId) %>
-  <% else %>
-    <%= form_for @room do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, :value=> @user.id %>
+      <% if @isRoom == true %>
+        <%= link_to "メッセージを送信", room_path(@roomId) %>
+      <% else %>
+        <%= form_for @room do |f| %>
+          <%= fields_for @entry do |e| %>
+            <%= e.hidden_field :user_id, :value=> @user.id %>
+          <% end %>
+          <%= f.submit "メッセージを送信" %>
+        <% end %>
       <% end %>
-      <%= f.submit "メッセージを送信" %>
+    </div>
     <% end %>
-  <% end %>
-</div>
-<% end %>
-
       </div>
+      <!---Chat-->
       <div class="profile-info-list">
 
       </div>
@@ -80,54 +80,53 @@
     <ul>
       <li>
 
-      <%= link_to  user_path(current_user.id) do %>
+      <%= link_to  user_path(@user.id) do %>
       ホーム
       <% end %>
       </li>
         <li>
-         <%= link_to  user_images_path(current_user.id) do %>
+         <%= link_to  user_images_path(@user.id) do %>
       画像
       <% end %>
       </li>
       <li>
-     <%= link_to  user_sounds_path(current_user.id) do %>
+     <%= link_to  user_sounds_path(@user.id) do %>
      音楽
       <% end %>
       </li>
       <li>
-     <%= link_to  user_videos_path(current_user.id) do %>
+     <%= link_to  user_videos_path(@user.id) do %>
      動画
       <% end %>
       </li>
       <li>
-     <%= link_to  user_sentences_path(current_user.id) do %>
+     <%= link_to  user_sentences_path(@user.id) do %>
      文字
      </li>
       <% end %>
     </ul>
   </div>
   <div class="userWorksWrapper">
-<% if @allwork.present? %>
+<% unless @allworks.blank? %>
   <% @allworks.each do |work| %>
-   <div class="eachWorksBox">
-   <% @name = work.model_name %>
-   <% if @name == "Image" %>
-    <%= render partial: 'users/images_works', locals: { image: work} %>
-    <% elsif @name == "Video" %>
-    <%= render partial: 'users/videos_works', locals: { video: work} %>
-    <% elsif @name == "Sentence" %>
-   <%= render partial: 'users/sentences_works', locals: { sentence: work} %>
-    <% else @name == "Sound" %>
-    <%= render partial: 'users/sounds_works', locals: { sound: work} %>
-    <% end %>
-   </div>
+      <div class="eachWorksBox">
+      <% @name = work.model_name %>
+      <% if @name == "Image" %>
+        <%= render partial: 'users/images_works', locals: { image: work} %>
+        <% elsif @name == "Video" %>
+        <%= render partial: 'users/videos_works', locals: { video: work} %>
+        <% elsif @name == "Sentence" %>
+      <%= render partial: 'users/sentences_works', locals: { sentence: work} %>
+        <% else @name == "Sound" %>
+        <%= render partial: 'users/sounds_works', locals: { sound: work} %>
+        <% end %>
+      </div>
    <% end %>
-
-   <% else %>
-   <div class="notPostyet">
-   まだ作品は投稿されていません。
-   </div>
+    <% else %>
+    <div class="notPostyet">
+    まだ作品は投稿されていません。
+    </div>
    <% end %>
   </div>
-  </div>
+</div>
 

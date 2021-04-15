@@ -30,12 +30,7 @@
     <div id="like-<%= image.id %>">
     <%= render 'likes/image_like', { image: image} %>
     </div>
-    <%= link_to image_path(image.id) do %>
-    <%= image_tag 'comment.svg', :size => '26' %>
 
-    <%= image.comments.count %>
-
-    <% end %>
    </div>
   <div id="title">
   <%= image.title %>

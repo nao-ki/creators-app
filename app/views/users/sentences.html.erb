@@ -7,6 +7,16 @@
  <% else  %>
  <%= image_tag 'user.png', :size => '80' %>
  <% end %>
+<!--フォロー、フォロワー--->
+  <div class="followWrap">
+    <%= link_to followers_user_path(@user.id) do %>
+        フォロワー<%= @user.followers.count %>人
+    <% end %>
+    <%= link_to following_user_path(@user.id) do %>
+          フォロー<%= @user.following.count %>人
+    <% end %>
+ </div>
+<!--フォロー、フォロワー--->
     <div class="artist-genre">
       <%= @user.genre %>
     </div>
@@ -24,10 +34,26 @@
   <!-- left end -->
   <div class="right">
     <div class="profile-info">
-      <div class="profile-name"><%= @user.nickname %></div>
-      <div class="profile-info-list">
-
+      <div class="profile-name"><%= @user.nickname %>
+<!---Chat-->
+      <% unless @user.id == current_user.id %>
+      <div class="message-wrapper">
+      <% if @isRoom == true %>
+        <%= link_to "メッセージを送信", room_path(@roomId) %>
+      <% else %>
+        <%= form_for @room do |f| %>
+          <%= fields_for @entry do |e| %>
+            <%= e.hidden_field :user_id, :value=> @user.id %>
+          <% end %>
+          <%= f.submit "メッセージを送信" %>
+        <% end %>
+      <% end %>
+    </div>
+    <% end %>
+       <!---Chat-->
       </div>
+
+
       <div class="profile-info-list">
         <%= @user.url_link %>
       </div>
@@ -48,22 +74,22 @@
   <div class="worksGenre">
     <ul>
       <li>
-      <%= link_to  user_path(current_user.id) do %>
+      <%= link_to  user_path(@user.id) do %>
       ホーム
       <% end %>
       </li>
         <li>
-         <%= link_to  user_images_path(current_user.id) do %>
+         <%= link_to  user_images_path(@user.id) do %>
       画像
       <% end %>
       </li>
       <li>
-     <%= link_to  user_sounds_path(current_user.id) do %>
+     <%= link_to  user_sounds_path(@user.id) do %>
      音楽
       <% end %>
       </li>
       <li>
-     <%= link_to  user_videos_path(current_user.id) do %>
+     <%= link_to  user_videos_path(@user.id) do %>
      動画
       <% end %>
       </li>

@@ -3,10 +3,7 @@
   <div class="heart">
  <%=link_to sentence_like_path(sentence, sentence.likes), {method: "delete", remote: true, class: "likes-count"} do %>
 <%= image_tag 'like.png', :size => '20' %>
- <% if sentence.likes.count == 0 %>
-
-  <%# いいねがまだありません。 %>
- <%  else %>
+ <% unless sentence.likes.count == 0 %>
 
  <%= sentence.likes.count %>
 
@@ -18,10 +15,8 @@
  <%= link_to sentence_likes_path(sentence), {method: "post", remote: true, class: "likes-count"} do %>
 <%= image_tag 'unlike.png', :size => '20' %>
 <% end %>
- <% if sentence.likes.count == 0 %>
+ <% unless sentence.likes.count == 0 %>
 
-  <%# いいねがまだありません。 %>
- <%  else %>
  <%= sentence.likes.count %>
 
 </div>

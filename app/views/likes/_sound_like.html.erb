@@ -3,10 +3,7 @@
  <div class="heart">
  <%=link_to sound_like_path(sound, sound.likes), {method: "delete", remote: true, class: "likes-count"} do %>
  <%= image_tag 'like.png', :size => '20' %>
- <% if sound.likes.count == 0 %>
-
-
- <%  else %>
+ <% unless sound.likes.count == 0 %>
 
  <%= sound.likes.count %>
 
@@ -18,9 +15,8 @@
  <div class="heart">
   <%= link_to sound_likes_path(sound), {method: "post", remote: true, class: "likes-count"} do %>
  <%= image_tag 'unlike.png', :size => '20' %>
- <% if sound.likes.count == 0 %>
+ <% unless sound.likes.count == 0 %>
 
- <%  else %>
  <%= sound.likes.count %>
 
 </div>

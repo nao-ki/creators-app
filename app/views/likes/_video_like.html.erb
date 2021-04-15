@@ -3,10 +3,7 @@
   <div class="heart">
  <%=link_to video_like_path(video, video.likes), {method: "delete", remote: true, class: "likes-count"} do %>
 <%= image_tag 'like.png', :size => '20' %>
- <% if video.likes.count == 0 %>
-
-  <%# いいねがまだありません。 %>
- <%  else %>
+ <% unless video.likes.count == 0 %>
 
  <%= video.likes.count %>
 
@@ -18,10 +15,8 @@
  <%= link_to video_likes_path(video), {method: "post", remote: true, class: "likes-count"} do %>
 <%= image_tag 'unlike.png', :size => '20' %>
 <% end %>
- <% if video.likes.count == 0 %>
+ <% unless video.likes.count == 0 %>
 
-  <%# いいねがまだありません。 %>
- <%  else %>
  <%= video.likes.count %>
 
 </div>

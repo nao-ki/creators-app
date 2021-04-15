@@ -15,15 +15,17 @@
 <div class="each-followers-box">
 <div class="f-right">
 
-<%# <%= render "users/follow_form", { user: user } %>
+<%= render "users/follow_form" %>
 
 </div>
  <% @icon = Icon.find_by(user_id: user.id) %>
+ <%= link_to user_path(user.id) do %>
   <% if @icon %>
   <%= image_tag @icon.icon, :size => '30', class: 'usericon' %>
   <% else %>
   <%= image_tag 'user.png', :size => '30', class: 'usericon'  %>
   <% end %>
+<% end %>
  <div class="f-info">
  <div class="f-nickname">
  <%= link_to user_path(user.id) do %>

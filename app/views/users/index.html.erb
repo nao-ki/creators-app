@@ -1,6 +1,0 @@
-<div class="space" style="margin-top: 90px">
-<h3>ユーザ一覧</h3>
-<% @users.each do |user| %>
- <%= link_to "ユーザ名：#{user.nickname}", user_path(user.id) %>
-<% end %>
-</div>

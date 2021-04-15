@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  before_action :chatinfo, only: [:images, :videos, :sounds, :sentences ]
+
+
   def index
     @users = User.all
   end
@@ -23,7 +26,16 @@ class UsersController < ApplicationController
   def show
       @user  = User.find(params[:id])
 
-      @currentUserEntry = Entry.where(user_id: current_user.id)
+      @usericon = Icon.find_by(user_id: @user.id)
+      @sentences = @user.sentences
+
+      @image = Image.where(user_id: @user.id).order("created_at DESC")
+      @video = Video.where(user_id: @user.id).order("created_at DESC")
+      @sound = Sound.where(user_id: @user.id).order("created_at DESC")
+      @sentence = Sentence.where(user_id: @user.id).order("created_at DESC")
+      @allworks = (@image + @video + @sound + @sentence).sort_by{|record| record.created_at}.reverse!
+
+    @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
     unless @user.id == current_user.id
       @currentUserEntry.each do |cu|
@@ -38,28 +50,18 @@ class UsersController < ApplicationController
       unless @isRoom
         @room = Room.new
         @entry = Entry.new
-
     end
   end
-      @usericon = Icon.find_by(user_id: @user.id)
-      @sentences = @user.sentences
 
-      @image = Image.where(user_id: @user.id).order("created_at DESC")
-      @video = Video.where(user_id: @user.id).order("created_at DESC")
-      @sound = Sound.where(user_id: @user.id).order("created_at DESC")
-      @sentence = Sentence.where(user_id: @user.id).order("created_at DESC")
-      @allworks = (@image + @video + @sound + @sentence).sort_by{|record| record.created_at}.reverse!
-  end
+ end
 
   def following
-    #@userがフォローしているユーザー
     @user  = User.find(params[:id])
     @users = @user.following
 
   end
 
   def followers
-    #@userをフォローしているユーザー
     @user  = User.find(params[:id])
 
     @users = @user.follower_relationships
@@ -83,25 +85,21 @@ def following_works
 end
 
     def images
-      @user = User.find(params[:user_id])
       @usericon = Icon.find_by(user_id: @user.id)
       @images = Image.where(user_id: @user.id)
     end
 
     def videos
-      @user = User.find(params[:user_id])
       @usericon = Icon.find_by(user_id: @user.id)
       @videos = Video.where(user_id: @user.id)
     end
 
     def sounds
-      @user = User.find(params[:user_id])
       @usericon = Icon.find_by(user_id: @user.id)
       @sounds = Sound.where(user_id: @user.id)
     end
 
     def sentences
-      @user = User.find(params[:user_id])
       @usericon = Icon.find_by(user_id: @user.id)
       @sentences = Sentence.where(user_id: @user.id)
     end
@@ -110,7 +108,25 @@ end
   def user_params
     params.require(:user).permit(:email, :genre, :url_link, :introduction, :word)
   end
-  def icon_params
-    params.require(:icon).permit(:icon)
+
+  def chatinfo
+      @user = User.find(params[:user_id])
+      @currentUserEntry = Entry.where(user_id: current_user.id)
+      @userEntry=Entry.where(user_id: @user.id)
+      unless @user.id == current_user.id
+        @currentUserEntry.each do |cu|
+          @userEntry.each do |u|
+            if cu.room_id == u.room_id then
+              @isRoom = true
+              @roomId = cu.room_id
+            end
+          end
+        end
+        unless @isRoom
+          @room = Room.new
+          @entry = Entry.new
+      end
+    end
   end
+
 end

@@ -4,7 +4,7 @@
   <%= link_to image_like_path(image, image.likes), {method: "delete", remote: true, class: "likes-count"} do %>
   <%= image_tag 'like.png', :size => '20' %>
    <% end %>
-  <%= image.likes.count %>
+  <%= image.likes.count unless image.likes.count == 0%>
   </div>
 
  <% else %>
@@ -12,10 +12,10 @@
   <%= link_to image_likes_path(image), {method: "post", remote: true, class: "likes-count"} do %>
  <%= image_tag 'unlike.png', :size => '20' %>
   <% end %>
- <%= image.likes.count %>
+ <%= image.likes.count unless image.likes.count == 0 %>
  </div>
 
 <% end %>
  <% else %>
-<%= image.likes.count %>
+<%= image.likes.count unless image.likes.count == 0 %>
 <% end %>
