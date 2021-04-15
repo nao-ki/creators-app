@@ -40,7 +40,7 @@ class SoundsController < ApplicationController
     if sound.user_id == current_user.id
       sound.destroy
     end
-    redirect_to @sounds
+    redirect_to user_sounds_path(current_user.id)
   end
 
   def show

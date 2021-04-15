@@ -39,7 +39,7 @@ def destroy
   if video.user_id == current_user.id
     video.destroy
   end
-  redirect_to action: :index
+  redirect_to user_videos_path(current_user.id)
 end
 
 def show

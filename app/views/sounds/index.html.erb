@@ -68,32 +68,3 @@ document.addEventListener("turbolinks:load", function()  {
 	}
 });
 </script>
-
-<!--
-<div class="spaces" style="margin-top: 200px; margin-left: 100px;">
-
-<% @sounds.each do |sound| %>
-
-  <p>title:<%= sound.title %></p>
-  <p style="margin-bottom: 10px;">content:
-   <%= sound.content %>
-    --<%= simple_format(sound.content.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "")) %>
-----------------------------
-    <% if sound.tags.any? %>
-    <% sound.tags.each do |tag| %>
-      <p>#<%= tag.name %></p>
-    <% end %>
-    <% end %>
--------------------------------
-   </p>
-  <p>poster:<%= sound.user.nickname %></p>
-  <% if sound.sound.attached? %>
-  <audio src="<%= rails_blob_url(sound.sound) %>" type="sound/mp3" controls></audio>
-  <% end %>
-  <div id="like-<%= sound.id %>">
-  <%= render 'likes/sound_like', { sound: sound} %>
-  </div>
-
-<% end %>
-</div>
--->
