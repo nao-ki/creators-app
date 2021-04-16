@@ -16,12 +16,10 @@
   registration_path(resource_name)) do |f| %>
 
         <%= f.text_field :nickname, autofocus: true, maxlength: "100", class: "input-field", placeholder: "ニックネーム" %>
-            <br />
-
         <%= f.email_field :email,
   autofocus: true, autocomplete: "email", class: "input-field", placeholder: "メールアドレス" %>
             <% if @minimum_password_length %>
-                <% end %><br />
+                <% end %>
                     <%= f.password_field :password, autocomplete: "new-password", class:
   "input-field", placeholder: "パスワード:6~12文字以内" %>
                         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input-field", placeholder: "パスワードを再入力" %>
