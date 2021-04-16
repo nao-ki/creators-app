@@ -1325,6 +1325,16 @@ ul {
     margin-top: 80px;
 }
 
+.previewImage {
+    width: 66%;
+    height: 600px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-right: 1px solid rgb(219, 219, 219);
+    border-radius: 3px 0 0 3px;
+}
+
 .preview {
     width: 66%;
     height: 600px;
@@ -1348,6 +1358,7 @@ ul {
     #inText {
         margin: 10px;
         content: "\A";
+        white-space: break-spaces;
     }
 }
 
