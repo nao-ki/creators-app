@@ -133,14 +133,13 @@ body {
     height: 480px;
     padding: 5px 18px 16px 18px;
     background-color: rgba(255, 255, 255, 0.658);
-    // overflow: hidden;
-    border-radius: 1%;
-    border: solid 1px;
     position: absolute;
     margin: 100px auto;
     top: 0;
     right: 0;
     left: 0;
+    box-shadow: 0 0 2px 0 #5c5b5b;
+    border-radius: 3px;
 }
 
 .button-box {
@@ -1851,6 +1850,7 @@ video {
     font-family: '游明朝', 'Yu Mincho', YuMincho, 'Hiragino Mincho Pro', serif;
     padding: 0 10px;
     margin: 5px;
+    white-space: break-spaces;
 }
 
 .wrapper-like {

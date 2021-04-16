@@ -202,6 +202,9 @@ table td {
         background-color: transparent;
         border: none;
     }
+    input:hover {
+        cursor: pointer;
+    }
 }
 
 .profile-name .name-mr {
