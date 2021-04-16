@@ -10,7 +10,7 @@ has_many :entries
 has_many :direct_messages
 has_many :rooms, through: :entries
 
-# validates :nickname, presence: :true
+validates :nickname, presence: :true
 
 has_one :icon
 #ユーザアイコン
