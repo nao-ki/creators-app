@@ -14,8 +14,11 @@
         <div class="signup-form">
             <div class="input-group">
                 <!-- emailアドレス入力 -->
+
 <% if alert %>
+<div>
     <%= alert %>
+</div>
 <% end %>
                 <%= form_for(resource, as: resource_name, url:
         session_path(resource_name)) do |f| %>

@@ -106,7 +106,7 @@ end
 
   private
   def user_params
-    params.require(:user).permit(:email, :genre, :url_link, :introduction, :word)
+    params.require(:user).permit(:nickname, :email, :genre, :url_link, :introduction, :word)
   end
 
   def chatinfo
